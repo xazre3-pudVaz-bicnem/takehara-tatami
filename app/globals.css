@@ -1,0 +1,217 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-noto-serif: 'Noto Serif JP', serif;
+  --font-noto-sans: 'Noto Sans JP', sans-serif;
+  --tatami-main: #88B462;
+  --tatami-light: #C4D9AC;
+  --tatami-50: #F2F7EE;
+  --cream: #F8F5EC;
+  --ecru: #EDE8D9;
+  --wood: #C4A882;
+  --ink: #2C2A28;
+  --muted: #6B6660;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  color: var(--ink);
+  background-color: #fff;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── Tatami grain line background (floats upward slowly) ─── */
+.tatami-grain {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(136, 180, 98, 0.06) 49px,
+      rgba(136, 180, 98, 0.06) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 99px,
+      rgba(136, 180, 98, 0.04) 99px,
+      rgba(136, 180, 98, 0.04) 100px
+    );
+}
+
+/* ─── Seigaiha (wave) pattern — tatami green ─── */
+.seigaiha {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='28' r='18' fill='none' stroke='rgba(136,180,98,0.07)' stroke-width='1'/%3E%3Ccircle cx='0' cy='28' r='18' fill='none' stroke='rgba(136,180,98,0.07)' stroke-width='1'/%3E%3Ccircle cx='40' cy='28' r='18' fill='none' stroke='rgba(136,180,98,0.07)' stroke-width='1'/%3E%3Ccircle cx='10' cy='8' r='18' fill='none' stroke='rgba(136,180,98,0.07)' stroke-width='1'/%3E%3Ccircle cx='30' cy='8' r='18' fill='none' stroke='rgba(136,180,98,0.07)' stroke-width='1'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+}
+
+/* ─── Shimmer button ─── */
+.btn-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 70%
+  );
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* ─── Work card image hover zoom ─── */
+.work-card-img {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.work-card:hover .work-card-img {
+  transform: scale(1.05);
+}
+
+/* ─── Custom scrollbar ─── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--tatami-50); }
+::-webkit-scrollbar-thumb { background: var(--tatami-light); border-radius: 3px; }
+
+/* ─── Prose styles for WordPress content ─── */
+.wp-content { font-size: 0.9375rem; line-height: 1.9; color: var(--ink); }
+.wp-content h2 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 2.5rem 0 0.875rem;
+  font-family: var(--font-noto-serif), serif;
+  padding-left: 0.875rem;
+  border-left: 3px solid var(--tatami-main);
+  color: var(--ink);
+}
+.wp-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 2rem 0 0.625rem;
+  font-family: var(--font-noto-serif), serif;
+  color: var(--ink);
+}
+.wp-content h4 { font-size: 0.95rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.wp-content p { margin-bottom: 1.25rem; line-height: 1.9; }
+.wp-content ul { list-style: none; padding-left: 1.25rem; margin-bottom: 1.25rem; }
+.wp-content ul li { position: relative; padding-left: 1rem; margin-bottom: 0.375rem; }
+.wp-content ul li::before { content: '◇'; position: absolute; left: -0.25rem; color: var(--tatami-main); font-size: 0.65rem; top: 0.35em; }
+.wp-content ol { list-style: decimal; padding-left: 1.75rem; margin-bottom: 1.25rem; }
+.wp-content ol li { margin-bottom: 0.375rem; }
+.wp-content img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; box-shadow: 0 4px 20px rgba(44,42,40,0.08); }
+.wp-content a { color: var(--tatami-main); text-decoration: underline; text-underline-offset: 2px; }
+.wp-content a:hover { color: #577C3C; }
+.wp-content blockquote {
+  border-left: 3px solid var(--tatami-light);
+  padding: 0.875rem 1.25rem;
+  margin: 1.5rem 0;
+  color: var(--muted);
+  background: #F2F7EE;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: italic;
+}
+.wp-content table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem; }
+.wp-content th { background: #F2F7EE; font-weight: 700; padding: 0.625rem 0.875rem; border: 1px solid var(--tatami-light); text-align: left; }
+.wp-content td { padding: 0.625rem 0.875rem; border: 1px solid #E0EDD6; }
+.wp-content tr:nth-child(even) td { background: #F8FBFF; }
+.wp-content figure { margin: 1.5rem 0; }
+.wp-content figcaption { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: -0.5rem; margin-bottom: 0.75rem; }
+.wp-content hr { border: none; border-top: 1px solid #E0EDD6; margin: 2rem 0; }
+.wp-content strong { font-weight: 700; color: var(--ink); }
+.wp-content em { font-style: italic; color: var(--muted); }
+.wp-content code { font-family: monospace; background: #F2F7EE; padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.85em; }
+
+/* ─── Loading screen: tatami grid drifting background ─── */
+/*
+ * 50×50 の格子をゆっくり対角線方向に流す。
+ * 50px ちょうど動かすことでシームレスにループする。
+ */
+@keyframes tatamiDrift {
+  from { background-position: 0px 0px, 0px 0px; }
+  to   { background-position: 50px 50px, 50px 50px; }
+}
+.tatami-loading-bg {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 49px,
+      rgba(136, 180, 98, 0.055) 49px,
+      rgba(136, 180, 98, 0.055) 50px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 49px,
+      rgba(136, 180, 98, 0.04) 49px,
+      rgba(136, 180, 98, 0.04) 50px
+    );
+  animation: tatamiDrift 12s linear infinite;
+}
+
+/* ─── Loading screen: shimmer line ─── */
+@keyframes loadingShimmer {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+.loading-shimmer {
+  animation: loadingShimmer 2.2s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+/* ─── Loading screen: medallion pulse ─── */
+@keyframes medallionPulse {
+  0%, 100% { opacity: 0.72; }
+  50%       { opacity: 1; }
+}
+.medallion-pulse {
+  animation: medallionPulse 3s ease-in-out infinite;
+}
+
+/* ─── Blog card entrance animation ─── */
+@keyframes blogCardIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.blog-card-anim {
+  animation: blogCardIn 0.55s ease-out both;
+}
+
+/* ─── Skeleton loading ─── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ─── Navigation progress bar: glow effect ─── */
+/* Framer Motion がインラインスタイルで制御するので追加 CSS は最小限 */
+#nav-progress-bar-glow {
+  filter: blur(1px);
+}
+
+/* ─── Reduce motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
