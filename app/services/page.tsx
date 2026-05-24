@@ -327,7 +327,7 @@ export default function ServicesPage() {
             </FadeIn>
 
             {/* 素材カード */}
-            <div className="grid sm:grid-cols-3 gap-5 mb-14">
+            <div className="grid sm:grid-cols-3 gap-5 mb-10">
               {[
                 {
                   name: '和紙表',
@@ -364,6 +364,40 @@ export default function ServicesPage() {
               ))}
             </div>
 
+            {/* いぐさ以外の表 料金 */}
+            <FadeIn>
+              <p className="text-tatami-400 text-[10px] tracking-[0.3em] mb-5 text-center">PRICE · 料金</p>
+            </FadeIn>
+            <FadeIn>
+              <div className="bg-tatami-50 rounded-2xl border border-tatami-100 p-6 mb-14">
+                <p className="text-tatami-500 text-xs font-bold tracking-wider mb-4">いぐさ以外の表</p>
+                <div className="grid sm:grid-cols-3 gap-3 mb-5">
+                  {[
+                    { label: '表替え', price: '12,000円〜' },
+                    { label: '裏返し', price: '4,000円〜' },
+                    { label: '新調',   price: '22,000円〜' },
+                  ].map(item => (
+                    <div key={item.label} className="flex items-center justify-between bg-white border border-tatami-100 rounded-xl px-5 py-3">
+                      <span className="text-ink text-sm font-medium">{item.label}</span>
+                      <span className="text-tatami-600 font-bold text-sm">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-tatami-500 text-xs font-bold tracking-wider mb-3">目積ヘリ無し半畳</p>
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {[
+                    { label: '表替え', price: '10,000円〜' },
+                    { label: '新調',   price: '15,000円〜' },
+                  ].map(item => (
+                    <div key={item.label} className="flex items-center justify-between bg-white border border-tatami-100 rounded-xl px-5 py-3">
+                      <span className="text-ink text-sm font-medium">{item.label}</span>
+                      <span className="text-tatami-600 font-bold text-sm">{item.price}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </FadeIn>
+
             {/* 素材比較表 */}
             <FadeIn>
               <div className="bg-tatami-50 rounded-2xl border border-tatami-100 overflow-hidden">
@@ -388,7 +422,7 @@ export default function ServicesPage() {
                             国産高級天然いぐさ
                           </span>
                         </th>
-                        <th className="text-center px-3 py-3.5 text-xs font-bold text-[#5A7080]">樹脂表</th>
+                        <th className="text-center px-3 py-3.5 text-xs font-bold text-[#5A7080]">いぐさ以外の表</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-tatami-100">
