@@ -92,6 +92,17 @@ export default function Reasons() {
           ja="選ばれる理由"
           description="地域密着の竹原タタミ店が、長年お客様に選ばれ続ける6つの理由です。"
         />
+        <div className="flex flex-wrap justify-center items-center gap-4 mb-10">
+          <span className="flex items-center gap-2 text-tatami-500 text-xs font-medium tracking-wide">
+            <span className="w-1 h-1 rounded-full bg-tatami-400 flex-shrink-0" />
+            1級畳製作技能士 在籍
+          </span>
+          <span className="w-px h-3 bg-tatami-300 hidden sm:block" />
+          <span className="flex items-center gap-2 text-tatami-500 text-xs font-medium tracking-wide">
+            <span className="w-1 h-1 rounded-full bg-tatami-400 flex-shrink-0" />
+            鹿児島県畳工業組合加盟店
+          </span>
+        </div>
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {reasons.map((r, i) => (
             <Card key={i} reason={r} index={i} />

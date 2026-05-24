@@ -117,6 +117,25 @@ export default function Hero() {
               <br />
               地域密着の竹原タタミ店が丁寧にご提案します。
             </motion.p>
+
+            {/* Credentials */}
+            <motion.div
+              className="mt-5 flex flex-wrap gap-x-5 gap-y-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.4, duration: 0.8 }}
+            >
+              {['1級畳製作技能士 在籍', '鹿児島県畳工業組合加盟店'].map(cred => (
+                <span
+                  key={cred}
+                  className="flex items-center gap-2 text-white/70 text-[11px] font-sans"
+                  style={{ textShadow: '0 1px 6px rgba(0,0,0,0.5)' }}
+                >
+                  <span className="inline-block w-3 h-px bg-tatami-300/70 flex-shrink-0" />
+                  {cred}
+                </span>
+              ))}
+            </motion.div>
           </div>
         </div>
       </motion.div>

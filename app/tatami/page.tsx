@@ -105,7 +105,7 @@ const cycle = [
     year: '3〜5年',
     title: '裏返し',
     titleEn: 'FLIPPING',
-    price: '¥2,000〜 / 枚',
+    price: '¥4,000〜 / 枚',
     desc: '畳表を裏側に返す、最もコストを抑えたメンテナンス。まだきれいな裏面を活かします。',
     color: '#A4C480',
     check: '色あせ・チクチク感が出始めたら',
@@ -114,7 +114,13 @@ const cycle = [
     year: '5〜10年',
     title: '表替え',
     titleEn: 'SURFACE REPLACEMENT',
-    price: '¥3,500〜 / 枚',
+    price: '¥5,000〜 / 枚',
+    priceDetails: [
+      { label: '下級品',         price: '5,000円〜' },
+      { label: '国産中級品',     price: '12,000円〜' },
+      { label: '高級天然いぐさ', price: '25,000円〜' },
+      { label: 'いぐさ以外の表', price: '12,000円〜' },
+    ],
     desc: '畳床はそのままに、表面のい草（畳表）と縁を新しく交換します。最も一般的なリフレッシュ方法。',
     color: '#88B462',
     check: '裏返しから数年が経過したら',
@@ -124,6 +130,12 @@ const cycle = [
     title: '新調',
     titleEn: 'FULL REPLACEMENT',
     price: '¥15,000〜 / 枚',
+    priceDetails: [
+      { label: '下級品',         price: '15,000円〜' },
+      { label: '国産中級品',     price: '22,000円〜' },
+      { label: '高級天然いぐさ', price: '35,000円〜' },
+      { label: 'いぐさ以外の表', price: '22,000円〜' },
+    ],
     desc: '畳床・畳表・縁のすべてを新品に交換。踏み心地が完全に蘇ります。新築・リフォームにも。',
     color: '#6E9A4C',
     check: '踏んだときの沈み・へたり感',
@@ -300,8 +312,19 @@ export default function TatamiPage() {
                     <h3 className="font-serif font-bold text-white text-xl mb-3">{c.title}</h3>
                     <p className="text-tatami-200 text-sm leading-relaxed mb-4">{c.desc}</p>
                     <div className="bg-tatami-700/50 rounded-lg px-3 py-2 mb-3">
-                      <p className="text-tatami-400 text-xs">目安料金</p>
-                      <p className="text-white text-sm font-bold">{c.price}</p>
+                      <p className="text-tatami-400 text-xs mb-1.5">目安料金</p>
+                      {'priceDetails' in c && c.priceDetails ? (
+                        <div className="space-y-1.5">
+                          {c.priceDetails.map(d => (
+                            <div key={d.label} className="flex items-center justify-between">
+                              <span className="text-tatami-300 text-[11px]">{d.label}</span>
+                              <span className="text-white text-xs font-bold">{d.price}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="text-white text-sm font-bold">{c.price}</p>
+                      )}
                     </div>
                     <p className="pt-3 border-t border-tatami-700 text-tatami-400 text-xs">
                       目安のサイン：{c.check}
