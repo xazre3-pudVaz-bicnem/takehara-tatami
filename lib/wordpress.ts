@@ -53,6 +53,13 @@ export interface WPPost {
   }
 }
 
+export interface WPWorksCategory {
+  id: number
+  slug: string
+  name: string
+  count: number
+}
+
 export interface WPWork {
   id: number
   slug: string
@@ -60,6 +67,11 @@ export interface WPWork {
   excerpt: { rendered: string }
   content: { rendered: string }
   date: string
+  works_category?: number[]
+  meta?: {
+    location?: string
+    service?: string
+  }
   acf?: {
     category?: string
     location?: string
@@ -69,6 +81,7 @@ export interface WPWork {
   }
   _embedded?: {
     'wp:featuredmedia'?: WPFeaturedMedia[]
+    'wp:term'?: WPWorksCategory[][]
   }
 }
 
@@ -149,9 +162,24 @@ export async function getAllPostSlugs(): Promise<string[]> {
 
 // ─── Works (施工事例) ────────────────────────────────────
 
-export async function getWorks(perPage = 12): Promise<WPWork[]> {
+export async function getWorksCategories(): Promise<WPWorksCategory[]> {
   try {
-    const res = await fetch(`${WP_BASE}/works?_embed&per_page=${perPage}`, {
+    const res = await fetch(`${WP_BASE}/works_category?per_page=50`, {
+      headers: WP_HEADERS,
+      next: { revalidate: 3600 },
+    })
+    if (!res.ok) return []
+    return res.json()
+  } catch {
+    return []
+  }
+}
+
+export async function getWorks(perPage = 24, categoryId?: number): Promise<WPWork[]> {
+  try {
+    let url = `${WP_BASE}/works?_embed&per_page=${perPage}`
+    if (categoryId) url += `&works_category=${categoryId}`
+    const res = await fetch(url, {
       headers: WP_HEADERS,
       next: { revalidate: 3600 },
     })
@@ -173,5 +201,19 @@ export async function getWorkBySlug(slug: string): Promise<WPWork | null> {
     return works[0] ?? null
   } catch {
     return null
+  }
+}
+
+export async function getAllWorkSlugs(): Promise<string[]> {
+  try {
+    const res = await fetch(`${WP_BASE}/works?per_page=100&_fields=slug`, {
+      headers: WP_HEADERS,
+      next: { revalidate: 3600 },
+    })
+    if (!res.ok) return []
+    const works: Array<{ slug: string }> = await res.json()
+    return works.map(w => w.slug)
+  } catch {
+    return []
   }
 }
