@@ -167,7 +167,7 @@ export default function ServiceArea() {
                 鹿児島県内全域（要相談）
               </div>
               <div className="absolute top-[26%] left-1/2 -translate-x-1/2 text-tatami-400 text-[10px] whitespace-nowrap">
-                鹿児島市全域
+                鹿児島市内（迅速対応）
               </div>
               {/* Pin */}
               <div className="relative z-10 text-center">

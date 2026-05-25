@@ -251,7 +251,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
           <p className="font-serif font-bold text-ink text-base mb-1">
             畳のことならお気軽にご相談ください
           </p>
-          <p className="text-muted text-sm mb-4">鹿児島市・姶良市・霧島市対応</p>
+          <p className="text-muted text-sm mb-4">鹿児島県内全域対応（鹿児島市内は迅速対応）</p>
           <a
             href="tel:0992671577"
             className="inline-flex items-center gap-2 bg-tatami-400 hover:bg-tatami-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors"

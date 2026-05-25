@@ -91,7 +91,7 @@ export default function Concept() {
               transition={{ duration: 0.4, delay: 0.85 }}
             >
               <span className="w-1.5 h-1.5 rounded-full bg-tatami-400" />
-              <span className="text-tatami-600 text-xs font-medium">鹿児島市全域 対応</span>
+              <span className="text-tatami-600 text-xs font-medium">鹿児島県内全域 対応</span>
             </motion.div>
           </div>
         </div>

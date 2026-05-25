@@ -351,7 +351,7 @@ export default function TatamiPage() {
                 鹿児島の畳のことなら<br className="sm:hidden" />お気軽にご相談ください
               </h2>
               <p className="text-muted text-sm leading-relaxed mb-8 max-w-md mx-auto">
-                鹿児島市内をはじめ、県内全域に対応。1枚からでも承ります。<br />
+                鹿児島県内全域対応（鹿児島市内は迅速対応）。1枚からでも承ります。<br />
                 現地確認・お見積もりは無料です。
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">

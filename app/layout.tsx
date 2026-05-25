@@ -4,7 +4,7 @@ import { NavigationProgress } from '@/components/NavigationProgress'
 
 const SITE_NAME = '(有)竹原タタミ店'
 const SITE_DESCRIPTION =
-  '鹿児島市東谷山で畳の張替え・表替え・裏返し・新調なら(有)竹原タタミ店へ。鹿児島市全域対応。縁なし畳・琉球畳風のご相談も承ります。'
+  '鹿児島市東谷山で畳の張替え・表替え・裏返し・新調なら(有)竹原タタミ店へ。鹿児島県内全域対応（鹿児島市内は迅速対応）。縁なし畳・琉球畳風のご相談も承ります。'
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://takehara-tatami.com'),
