@@ -211,7 +211,7 @@ export default function AboutPage() {
                 見積もりだけでも大丈夫です。
               </p>
               <a href="tel:0992671577" className="inline-flex items-center gap-2 bg-tatami-400 hover:bg-tatami-500 text-white font-bold text-xl px-10 py-4 rounded-2xl transition-colors shadow-lg shadow-tatami-400/30">
-                📞 099-267-1577
+                <Phone size={20} />099-267-1577
               </a>
               <p className="text-tatami-400/60 text-xs mt-4">8:30〜18:00（定休：日曜・祝日）</p>
             </FadeIn>

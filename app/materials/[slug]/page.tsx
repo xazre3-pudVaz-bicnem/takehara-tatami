@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Check } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
@@ -187,7 +188,7 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
                 <ul className="space-y-2">
                   {material.strengths.map((s, i) => (
                     <li key={i} className="flex items-start gap-2.5 p-3.5 bg-green-50 border border-green-100 rounded-xl">
-                      <span className="text-green-500 flex-shrink-0">✓</span>
+                      <Check size={15} className="text-green-500 flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-green-900">{s}</span>
                     </li>
                   ))}

@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useState, useRef } from 'react'
-import { ChevronDown } from 'lucide-react'
+import { ChevronDown, Phone } from 'lucide-react'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -161,8 +161,8 @@ export default function FAQPage() {
               viewport={{ once: true }}
             >
               <p className="text-muted text-sm mb-4">その他のご質問はお気軽にどうぞ</p>
-              <a href="tel:0992671577" className="font-bold text-tatami-500 text-xl hover:text-tatami-600 transition-colors block mb-1">
-                📞 099-267-1577
+              <a href="tel:0992671577" className="font-bold text-tatami-500 text-xl hover:text-tatami-600 transition-colors flex items-center gap-2 justify-center mb-1">
+                <Phone size={18} />099-267-1577
               </a>
               <p className="text-muted text-xs">8:30〜18:00（定休：日曜・祝日）</p>
             </motion.div>

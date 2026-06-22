@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
-import { Calendar, ArrowLeft, ChevronRight } from 'lucide-react'
+import { Calendar, ArrowLeft, ChevronRight, Phone } from 'lucide-react'
 import { getFeaturedImageUrl, formatDate, stripHtml, type WPPost } from '@/lib/wordpress'
 
 const WP_BASE_URL = 'https://wp.takeharatatamiten.com/wp-json/wp/v2'
@@ -256,7 +256,7 @@ export default function BlogPostClient({ slug }: { slug: string }) {
             href="tel:0992671577"
             className="inline-flex items-center gap-2 bg-tatami-400 hover:bg-tatami-500 text-white font-bold text-sm px-6 py-3 rounded-full transition-colors"
           >
-            📞 099-267-1577
+            <Phone size={14} />099-267-1577
           </a>
         </div>
 

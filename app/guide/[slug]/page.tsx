@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, X } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
@@ -178,7 +178,7 @@ export default async function GuideDetailPage({ params }: { params: Promise<{ sl
               <div className="bg-amber-50 border border-amber-100 rounded-xl p-5 space-y-2">
                 {guide.commonMistakes.map((mistake, i) => (
                   <div key={i} className="flex items-start gap-2">
-                    <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">✕</span>
+                    <X size={15} className="text-amber-500 flex-shrink-0 mt-0.5" />
                     <span className="text-sm text-amber-900">{mistake}</span>
                   </div>
                 ))}

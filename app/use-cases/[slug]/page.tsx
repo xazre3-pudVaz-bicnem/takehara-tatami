@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ChevronRight } from 'lucide-react'
+import { ChevronRight, AlertTriangle, Check } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
@@ -109,7 +109,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
               <ul className="space-y-2">
                 {useCase.challenges.map((c, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-muted">
-                    <span className="text-amber-500 mt-0.5">⚠</span>
+                    <AlertTriangle size={15} className="text-amber-500 mt-0.5 flex-shrink-0" />
                     <span>{c}</span>
                   </li>
                 ))}
@@ -149,7 +149,7 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
               <ul className="space-y-2">
                 {useCase.benefits.map((b, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-muted">
-                    <span className="text-tatami-500 mt-0.5">✓</span>
+                    <Check size={15} className="text-tatami-500 mt-0.5 flex-shrink-0" />
                     <span>{b}</span>
                   </li>
                 ))}

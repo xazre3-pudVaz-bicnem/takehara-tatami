@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { AlertTriangle, X, Check } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
@@ -155,7 +156,7 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
                 <div className="bg-red-50 border border-red-100 rounded-xl p-4 space-y-2">
                   {problem.risks.map((risk, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <span className="text-red-400 flex-shrink-0">⚠</span>
+                      <AlertTriangle size={15} className="text-red-400 flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-red-800">{risk}</span>
                     </div>
                   ))}
@@ -189,7 +190,7 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
                 <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 space-y-2">
                   {problem.doNotDo.map((item, i) => (
                     <div key={i} className="flex items-start gap-2">
-                      <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">✕</span>
+                      <X size={15} className="text-amber-500 flex-shrink-0 mt-0.5" />
                       <span className="text-sm text-amber-900">{item}</span>
                     </div>
                   ))}
@@ -238,7 +239,7 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
                   <ul className="space-y-2">
                     {problem.whenToCall.map((w, i) => (
                       <li key={i} className="flex items-start gap-2">
-                        <span className="text-tatami-400 flex-shrink-0">✓</span>
+                        <Check size={15} className="text-tatami-400 flex-shrink-0 mt-0.5" />
                         <span className="text-sm text-ink">{w}</span>
                       </li>
                     ))}
