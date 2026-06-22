@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return materialsData.map(m => ({ slug: m.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const material = getMaterialBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const material = getMaterialBySlug(slug)
   if (!material) return {}
   return {
     title: material.seo.title,
@@ -44,8 +45,9 @@ const comparisonRows = [
 
 const comparisonHeaders = ['国産高級い草', '国産標準い草', '中国産い草', '和紙畳', '樹脂畳']
 
-export default function MaterialDetailPage({ params }: { params: { slug: string } }) {
-  const material = getMaterialBySlug(params.slug)
+export default async function MaterialDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const material = getMaterialBySlug(slug)
   if (!material) notFound()
 
   const relatedMaterials = materialsData.filter(m => material.relatedMaterials.includes(m.slug) && m.slug !== material.slug)

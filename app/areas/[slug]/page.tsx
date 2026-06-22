@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return areasData.map(a => ({ slug: a.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const area = getAreaBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const area = getAreaBySlug(slug)
   if (!area) return {}
   return {
     title: area.seo.title,
@@ -55,8 +56,9 @@ const flow = [
   { step: '05', title: '仕上がり確認', desc: '設置後に仕上がりを確認していただきます。' },
 ]
 
-export default function AreaDetailPage({ params }: { params: { slug: string } }) {
-  const area = getAreaBySlug(params.slug)
+export default async function AreaDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const area = getAreaBySlug(slug)
   if (!area) notFound()
 
   const jsonLd = {

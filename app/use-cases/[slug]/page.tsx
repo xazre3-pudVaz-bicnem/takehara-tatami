@@ -17,8 +17,9 @@ export function generateStaticParams() {
   return useCasesData.map((u) => ({ slug: u.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const useCase = getUseCaseBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const useCase = getUseCaseBySlug(slug)
   if (!useCase) return {}
   return {
     title: useCase.seo.title,
@@ -28,8 +29,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function UseCaseDetailPage({ params }: { params: { slug: string } }) {
-  const useCase = getUseCaseBySlug(params.slug)
+export default async function UseCaseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const useCase = getUseCaseBySlug(slug)
   if (!useCase) notFound()
 
   const relatedServiceItems = useCase.relatedServices

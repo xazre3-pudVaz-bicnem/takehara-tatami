@@ -17,8 +17,9 @@ export function generateStaticParams() {
   return guidesData.map((g) => ({ slug: g.slug }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const guide = getGuideBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const guide = getGuideBySlug(slug)
   if (!guide) return {}
   return {
     title: guide.seo.title,
@@ -28,8 +29,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function GuideDetailPage({ params }: { params: { slug: string } }) {
-  const guide = getGuideBySlug(params.slug)
+export default async function GuideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const guide = getGuideBySlug(slug)
   if (!guide) notFound()
 
   const relatedServiceItems = guide.relatedServices

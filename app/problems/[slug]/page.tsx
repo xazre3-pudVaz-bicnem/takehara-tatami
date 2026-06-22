@@ -15,8 +15,9 @@ export function generateStaticParams() {
   return problemsData.map(p => ({ slug: p.slug }))
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const problem = getProblemBySlug(params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const problem = getProblemBySlug(slug)
   if (!problem) return {}
   return {
     title: problem.seo.title,
@@ -31,8 +32,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   }
 }
 
-export default function ProblemDetailPage({ params }: { params: { slug: string } }) {
-  const problem = getProblemBySlug(params.slug)
+export default async function ProblemDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const problem = getProblemBySlug(slug)
   if (!problem) notFound()
 
   const relatedProblems = problemsData.filter(p => problem.relatedProblems.includes(p.slug))
