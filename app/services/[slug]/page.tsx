@@ -34,8 +34,42 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
   const related = getRelatedServices(service.related)
 
+  const jsonLd = [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      name: service.title,
+      description: service.summary,
+      url: `https://www.takeharatatamiten.com/services/${service.slug}`,
+      provider: { '@type': 'LocalBusiness', name: '有限会社 竹原タタミ店', telephone: '099-267-1577' },
+      areaServed: { '@type': 'State', name: '鹿児島県' },
+      offers: { '@type': 'Offer', priceSpecification: { '@type': 'UnitPriceSpecification', price: service.priceFrom.replace(/[^0-9]/g, ''), priceCurrency: 'JPY' } },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://www.takeharatatamiten.com' },
+        { '@type': 'ListItem', position: 2, name: 'サービス', item: 'https://www.takeharatatamiten.com/services' },
+        { '@type': 'ListItem', position: 3, name: service.title, item: `https://www.takeharatatamiten.com/services/${service.slug}` },
+      ],
+    },
+    ...(service.faqs.length > 0 ? [{
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: service.faqs.map(f => ({
+        '@type': 'Question',
+        name: f.q,
+        acceptedAnswer: { '@type': 'Answer', text: f.a },
+      })),
+    }] : []),
+  ]
+
   return (
     <>
+      {jsonLd.map((schema, i) => (
+        <script key={i} type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+      ))}
       <Header />
       <main>
         <ServiceDetailContent service={service} related={related} />

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import './globals.css'
 import { NavigationProgress } from '@/components/NavigationProgress'
 
@@ -7,7 +7,7 @@ const SITE_DESCRIPTION =
   '鹿児島市東谷山で畳の張替え・表替え・裏返し・新調なら(有)竹原タタミ店へ。鹿児島県内全域対応（鹿児島市内は迅速対応）。縁なし畳・琉球畳風のご相談も承ります。'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://takehara-tatami.com'),
+  metadataBase: new URL('https://www.takeharatatamiten.com'),
   title: {
     default: `鹿児島市東谷山の畳張替え・新調なら｜${SITE_NAME}`,
     template: `%s｜${SITE_NAME}`,
@@ -38,13 +38,13 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
-    '@id': 'https://takehara-tatami.com/#localbusiness',
+    '@id': 'https://www.takeharatatamiten.com/#localbusiness',
     name: '有限会社 竹原タタミ店',
     alternateName: '竹原タタミ店',
     description: SITE_DESCRIPTION,
-    url: 'https://takehara-tatami.com',
-    logo: 'https://takehara-tatami.com/images/hero-tatami.jpg',
-    image: 'https://takehara-tatami.com/images/hero-tatami.jpg',
+    url: 'https://www.takeharatatamiten.com',
+    logo: 'https://www.takeharatatamiten.com/images/hero-tatami.jpg',
+    image: 'https://www.takeharatatamiten.com/images/hero-tatami.jpg',
     telephone: '099-267-1577',
     address: {
       '@type': 'PostalAddress',
@@ -82,9 +82,9 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    '@id': 'https://takehara-tatami.com/#organization',
+    '@id': 'https://www.takeharatatamiten.com/#organization',
     name: '有限会社 竹原タタミ店',
-    url: 'https://takehara-tatami.com',
+    url: 'https://www.takeharatatamiten.com',
     contactPoint: {
       '@type': 'ContactPoint',
       telephone: '099-267-1577',
@@ -102,8 +102,8 @@ const jsonLd = [
   {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
-    '@id': 'https://takehara-tatami.com/#website',
-    url: 'https://takehara-tatami.com',
+    '@id': 'https://www.takeharatatamiten.com/#website',
+    url: 'https://www.takeharatatamiten.com',
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
     inLanguage: 'ja',

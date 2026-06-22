@@ -1,4 +1,4 @@
-import type { MetadataRoute } from 'next'
+﻿import type { MetadataRoute } from 'next'
 import { areasData } from '@/lib/areas-data'
 import { problemsData } from '@/lib/problems-data'
 import { materialsData } from '@/lib/materials-data'
@@ -6,7 +6,7 @@ import { servicesData } from '@/lib/services-data'
 import { useCasesData } from '@/lib/usecases-data'
 import { guidesData } from '@/lib/guide-data'
 
-const BASE_URL = 'https://takehara-tatami.com'
+const BASE_URL = 'https://www.takeharatatamiten.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date()

@@ -9,9 +9,15 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import SummaryBox from '@/components/ui/SummaryBox'
 import RelatedLinks from '@/components/ui/RelatedLinks'
 import CTABanner from '@/components/ui/CTABanner'
-import { guidesData, getGuideBySlug } from '@/lib/guide-data'
+import { guidesData, getGuideBySlug, type GuideData } from '@/lib/guide-data'
 import { getServiceBySlug } from '@/lib/services-data'
 import IconByName from '@/components/ui/IconByName'
+
+type GuideDataExt = GuideData & {
+  expertTips?: string[]
+  commonMistakes?: string[]
+  detailedCostInfo?: string
+}
 
 export function generateStaticParams() {
   return guidesData.map((g) => ({ slug: g.slug }))
@@ -31,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function GuideDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const guide = getGuideBySlug(slug)
+  const guide = getGuideBySlug(slug) as GuideDataExt | undefined
   if (!guide) notFound()
 
   const relatedServiceItems = guide.relatedServices
@@ -45,16 +51,19 @@ export default async function GuideDetailPage({ params }: { params: Promise<{ sl
       '@type': 'Article',
       headline: guide.title,
       description: guide.summary,
-      url: `https://takehara-tatami.com/guide/${guide.slug}`,
+      url: `https://www.takeharatatamiten.com/guide/${guide.slug}`,
+      datePublished: '2024-01-15',
+      dateModified: '2025-06-01',
       author: { '@type': 'Organization', name: '有限会社 竹原タタミ店' },
+      publisher: { '@type': 'Organization', name: '有限会社 竹原タタミ店', url: 'https://www.takeharatatamiten.com' },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://takehara-tatami.com' },
-        { '@type': 'ListItem', position: 2, name: '畳のガイド', item: 'https://takehara-tatami.com/guide' },
-        { '@type': 'ListItem', position: 3, name: guide.title, item: `https://takehara-tatami.com/guide/${guide.slug}` },
+        { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://www.takeharatatamiten.com' },
+        { '@type': 'ListItem', position: 2, name: '畳のガイド', item: 'https://www.takeharatatamiten.com/guide' },
+        { '@type': 'ListItem', position: 3, name: guide.title, item: `https://www.takeharatatamiten.com/guide/${guide.slug}` },
       ],
     },
     ...(guide.faqs.length > 0 ? [{
@@ -143,6 +152,48 @@ export default async function GuideDetailPage({ params }: { params: Promise<{ sl
                     ))}
                   </tbody>
                 </table>
+              </div>
+            </section>
+          )}
+
+          {/* 職人直伝のコツ */}
+          {guide.expertTips && guide.expertTips.length > 0 && (
+            <section className="mt-12">
+              <h2 className="font-serif font-bold text-ink text-xl mb-5">職人直伝のコツ</h2>
+              <div className="rounded-2xl bg-tatami-800 text-white p-6 space-y-2.5">
+                {guide.expertTips.map((tip, i) => (
+                  <div key={i} className="flex items-start gap-2.5">
+                    <span className="text-tatami-400 flex-shrink-0 font-bold text-sm mt-0.5">{i + 1}.</span>
+                    <p className="text-sm text-tatami-100 leading-relaxed">{tip}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* よくある失敗 */}
+          {guide.commonMistakes && guide.commonMistakes.length > 0 && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">よくある失敗・勘違い</h2>
+              <div className="bg-amber-50 border border-amber-100 rounded-xl p-5 space-y-2">
+                {guide.commonMistakes.map((mistake, i) => (
+                  <div key={i} className="flex items-start gap-2">
+                    <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">✕</span>
+                    <span className="text-sm text-amber-900">{mistake}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 費用の詳細 */}
+          {guide.detailedCostInfo && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">費用の詳細</h2>
+              <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                {guide.detailedCostInfo.split('\n\n').map((para, i) => (
+                  <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                ))}
               </div>
             </section>
           )}

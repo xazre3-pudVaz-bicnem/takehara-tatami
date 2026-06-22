@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { ChevronRight } from 'lucide-react'
 import Header from '@/components/Header'
@@ -22,12 +22,12 @@ const jsonLd = {
   '@type': 'WebPage',
   name: '用途別の畳選び',
   description: '用途・ライフスタイル別の畳選びガイド',
-  url: 'https://takehara-tatami.com/use-cases',
+  url: 'https://www.takeharatatamiten.com/use-cases',
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://takehara-tatami.com' },
-      { '@type': 'ListItem', position: 2, name: '用途別の畳選び', item: 'https://takehara-tatami.com/use-cases' },
+      { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://www.takeharatatamiten.com' },
+      { '@type': 'ListItem', position: 2, name: '用途別の畳選び', item: 'https://www.takeharatatamiten.com/use-cases' },
     ],
   },
 }

@@ -9,7 +9,14 @@ import SummaryBox from '@/components/ui/SummaryBox'
 import CTABanner from '@/components/ui/CTABanner'
 import RelatedLinks from '@/components/ui/RelatedLinks'
 import FadeIn from '@/components/ui/FadeIn'
-import { problemsData, getProblemBySlug } from '@/lib/problems-data'
+import { problemsData, getProblemBySlug, type ProblemData } from '@/lib/problems-data'
+
+type ProblemDataExt = ProblemData & {
+  expertInsight?: string
+  preventionSchedule?: { timing: string; action: string }[]
+  commonMisconceptions?: { myth: string; fact: string }[]
+  costGuide?: string
+}
 
 export function generateStaticParams() {
   return problemsData.map(p => ({ slug: p.slug }))
@@ -34,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ProblemDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const problem = getProblemBySlug(slug)
+  const problem = getProblemBySlug(slug) as ProblemDataExt | undefined
   if (!problem) notFound()
 
   const relatedProblems = problemsData.filter(p => problem.relatedProblems.includes(p.slug))
@@ -54,23 +61,40 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
     '@type': 'Article',
     headline: problem.title,
     description: problem.seo.description,
+    datePublished: '2024-01-15',
+    dateModified: '2025-06-01',
     author: {
       '@type': 'Organization',
       name: '(有)竹原タタミ店',
+      url: 'https://www.takeharatatamiten.com',
     },
     publisher: {
       '@type': 'Organization',
       name: '(有)竹原タタミ店',
+      logo: { '@type': 'ImageObject', url: 'https://www.takeharatatamiten.com/logo.png' },
     },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': `https://www.takeharatatamiten.com/problems/${problem.slug}` },
   }
+
+  const howToJsonLd = problem.selfCare.length > 0 ? {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `${problem.title}の対処法`,
+    description: `${problem.title}を自分で対処する手順を解説します。`,
+    step: problem.selfCare.map((step, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      text: step,
+    })),
+  } : null
 
   const breadcrumbJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://takehara-tatami.com' },
-      { '@type': 'ListItem', position: 2, name: 'お悩み別ガイド', item: 'https://takehara-tatami.com/problems' },
-      { '@type': 'ListItem', position: 3, name: problem.title, item: `https://takehara-tatami.com/problems/${problem.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.takeharatatamiten.com' },
+      { '@type': 'ListItem', position: 2, name: 'お悩み別ガイド', item: 'https://www.takeharatatamiten.com/problems' },
+      { '@type': 'ListItem', position: 3, name: problem.title, item: `https://www.takeharatatamiten.com/problems/${problem.slug}` },
     ],
   }
 
@@ -79,6 +103,7 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }} />
+      {howToJsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }} />}
       <Header />
       <main>
         <PageHero
@@ -185,6 +210,24 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
             </FadeIn>
           )}
 
+          {/* 季節別の予防スケジュール */}
+          {problem.preventionSchedule && problem.preventionSchedule.length > 0 && (
+            <FadeIn delay={0.245}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">季節別の予防スケジュール</h2>
+                <div className="space-y-2">
+                  {problem.preventionSchedule.map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 p-3.5 bg-tatami-50 border border-tatami-100 rounded-xl">
+                      <span className="text-tatami-600 text-xs font-bold flex-shrink-0 min-w-[5.5rem]">{item.timing}</span>
+                      <span className="w-px bg-tatami-200 self-stretch flex-shrink-0" />
+                      <span className="text-sm text-ink">{item.action}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
           {/* 業者に相談すべきタイミング */}
           {problem.whenToCall.length > 0 && (
             <FadeIn delay={0.25}>
@@ -200,6 +243,57 @@ export default async function ProblemDetailPage({ params }: { params: Promise<{ 
                       </li>
                     ))}
                   </ul>
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 費用の目安 */}
+          {problem.costGuide && (
+            <FadeIn delay={0.27}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">費用の目安</h2>
+                <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                  {problem.costGuide.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 職人からのひとこと */}
+          {problem.expertInsight && (
+            <FadeIn delay={0.28}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">職人からのひとこと</h2>
+                <div className="rounded-2xl bg-tatami-800 text-white p-6 space-y-3">
+                  {problem.expertInsight.split('\n\n').map((para, i) => (
+                    <p key={i} className="text-sm text-tatami-100 leading-relaxed">{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* よくある誤解 */}
+          {problem.commonMisconceptions && problem.commonMisconceptions.length > 0 && (
+            <FadeIn delay={0.29}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">よくある誤解</h2>
+                <div className="space-y-3">
+                  {problem.commonMisconceptions.map((item, i) => (
+                    <div key={i} className="rounded-xl overflow-hidden border border-tatami-100">
+                      <div className="flex items-start gap-2 px-4 py-2.5 bg-red-50">
+                        <span className="text-[10px] font-bold bg-red-200 text-red-700 px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">誤解</span>
+                        <span className="text-sm text-red-800">{item.myth}</span>
+                      </div>
+                      <div className="flex items-start gap-2 px-4 py-2.5 bg-green-50">
+                        <span className="text-[10px] font-bold bg-green-200 text-green-700 px-1.5 py-0.5 rounded flex-shrink-0 mt-0.5">正解</span>
+                        <span className="text-sm text-green-900">{item.fact}</span>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </section>
             </FadeIn>

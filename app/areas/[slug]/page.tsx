@@ -9,7 +9,14 @@ import SummaryBox from '@/components/ui/SummaryBox'
 import CTABanner from '@/components/ui/CTABanner'
 import RelatedLinks from '@/components/ui/RelatedLinks'
 import FadeIn from '@/components/ui/FadeIn'
-import { areasData, getAreaBySlug } from '@/lib/areas-data'
+import { areasData, getAreaBySlug, type AreaData } from '@/lib/areas-data'
+
+type AreaDataExt = AreaData & {
+  neighborhoodInfo?: string
+  localHistory?: string
+  popularServices?: string[]
+  proTips?: string[]
+}
 
 export function generateStaticParams() {
   return areasData.map(a => ({ slug: a.slug }))
@@ -58,7 +65,7 @@ const flow = [
 
 export default async function AreaDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const area = getAreaBySlug(slug)
+  const area = getAreaBySlug(slug) as AreaDataExt | undefined
   if (!area) notFound()
 
   const jsonLd = {
@@ -102,9 +109,9 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://takehara-tatami.com' },
-      { '@type': 'ListItem', position: 2, name: '対応エリア', item: 'https://takehara-tatami.com/areas' },
-      { '@type': 'ListItem', position: 3, name: area.name, item: `https://takehara-tatami.com/areas/${area.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.takeharatatamiten.com' },
+      { '@type': 'ListItem', position: 2, name: '対応エリア', item: 'https://www.takeharatatamiten.com/areas' },
+      { '@type': 'ListItem', position: 3, name: area.name, item: `https://www.takeharatatamiten.com/areas/${area.slug}` },
     ],
   }
 
@@ -152,6 +159,38 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
             </section>
           </FadeIn>
 
+          {/* 地域の詳細情報 */}
+          {area.neighborhoodInfo && (
+            <FadeIn delay={0.08}>
+              <section className="mb-12">
+                <h2 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  {area.name}の地域・住宅情報
+                </h2>
+                <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                  {area.neighborhoodInfo.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 地元の畳文化 */}
+          {area.localHistory && (
+            <FadeIn delay={0.09}>
+              <section className="mb-12">
+                <h2 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  {area.name}の住まいと畳の歴史
+                </h2>
+                <div className="bg-white rounded-xl p-5 border border-tatami-100">
+                  {area.localHistory.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
           {/* よくある相談 */}
           {area.commonProblems.length > 0 && (
             <FadeIn delay={0.1}>
@@ -172,6 +211,42 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
                 <p className="mt-3 text-muted text-xs">
                   → <Link href="/problems" className="text-tatami-600 hover:underline">畳のお悩み別ページ一覧</Link>もご参照ください。
                 </p>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* よくご依頼いただく施工 */}
+          {area.popularServices && area.popularServices.length > 0 && (
+            <FadeIn delay={0.12}>
+              <section className="mb-12">
+                <h2 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
+                  {area.name}でよくご依頼いただく施工
+                </h2>
+                <div className="space-y-2">
+                  {area.popularServices.map((s, i) => (
+                    <div key={i} className="flex items-start gap-2.5 p-3.5 bg-tatami-50 border border-tatami-100 rounded-xl">
+                      <span className="w-5 h-5 rounded-full bg-tatami-400 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0 mt-0.5">{i + 1}</span>
+                      <span className="text-sm text-ink">{s}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 職人からのアドバイス */}
+          {area.proTips && area.proTips.length > 0 && (
+            <FadeIn delay={0.14}>
+              <section className="mb-12">
+                <h2 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">職人からのアドバイス</h2>
+                <div className="rounded-2xl bg-tatami-800 text-white p-6 space-y-2.5">
+                  {area.proTips.map((tip, i) => (
+                    <div key={i} className="flex items-start gap-2.5">
+                      <span className="text-tatami-400 flex-shrink-0 mt-0.5">•</span>
+                      <p className="text-sm text-tatami-100 leading-relaxed">{tip}</p>
+                    </div>
+                  ))}
+                </div>
               </section>
             </FadeIn>
           )}

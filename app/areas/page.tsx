@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import { MapPin } from 'lucide-react'
 import Header from '@/components/Header'
@@ -11,12 +11,12 @@ const jsonLd = {
   '@type': 'WebPage',
   name: '鹿児島県の対応エリア',
   description: '竹原タタミ店の対応エリア一覧。鹿児島市内は迅速対応、鹿児島県内全域に対応。',
-  url: 'https://takehara-tatami.com/areas',
+  url: 'https://www.takeharatatamiten.com/areas',
   breadcrumb: {
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://takehara-tatami.com' },
-      { '@type': 'ListItem', position: 2, name: '対応エリア', item: 'https://takehara-tatami.com/areas' },
+      { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://www.takeharatatamiten.com' },
+      { '@type': 'ListItem', position: 2, name: '対応エリア', item: 'https://www.takeharatatamiten.com/areas' },
     ],
   },
 }

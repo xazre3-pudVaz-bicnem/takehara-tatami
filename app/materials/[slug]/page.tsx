@@ -9,7 +9,13 @@ import SummaryBox from '@/components/ui/SummaryBox'
 import CTABanner from '@/components/ui/CTABanner'
 import RelatedLinks from '@/components/ui/RelatedLinks'
 import FadeIn from '@/components/ui/FadeIn'
-import { materialsData, getMaterialBySlug } from '@/lib/materials-data'
+import { materialsData, getMaterialBySlug, type MaterialData } from '@/lib/materials-data'
+
+type MaterialDataExt = MaterialData & {
+  detailedDescription?: string
+  proRecommendation?: string
+  maintenanceGuide?: string
+}
 
 export function generateStaticParams() {
   return materialsData.map(m => ({ slug: m.slug }))
@@ -47,7 +53,7 @@ const comparisonHeaders = ['国産高級い草', '国産標準い草', '中国�
 
 export default async function MaterialDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const material = getMaterialBySlug(slug)
+  const material = getMaterialBySlug(slug) as MaterialDataExt | undefined
   if (!material) notFound()
 
   const relatedMaterials = materialsData.filter(m => material.relatedMaterials.includes(m.slug) && m.slug !== material.slug)
@@ -66,9 +72,9 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://takehara-tatami.com' },
-      { '@type': 'ListItem', position: 2, name: '畳の素材', item: 'https://takehara-tatami.com/materials' },
-      { '@type': 'ListItem', position: 3, name: material.name, item: `https://takehara-tatami.com/materials/${material.slug}` },
+      { '@type': 'ListItem', position: 1, name: 'ホーム', item: 'https://www.takeharatatamiten.com' },
+      { '@type': 'ListItem', position: 2, name: '畳の素材', item: 'https://www.takeharatatamiten.com/materials' },
+      { '@type': 'ListItem', position: 3, name: material.name, item: `https://www.takeharatatamiten.com/materials/${material.slug}` },
     ],
   }
 
@@ -109,6 +115,20 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
               </div>
             </div>
           </FadeIn>
+
+          {/* 詳細説明 */}
+          {material.detailedDescription && (
+            <FadeIn delay={0.05}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">詳しい素材解説</h2>
+                <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                  {material.detailedDescription.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
 
           {/* Specs */}
           {material.specs.length > 0 && (
@@ -228,6 +248,20 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
             </FadeIn>
           )}
 
+          {/* 職人のおすすめポイント */}
+          {material.proRecommendation && (
+            <FadeIn delay={0.28}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">職人からのおすすめポイント</h2>
+                <div className="rounded-2xl bg-tatami-800 text-white p-6">
+                  {material.proRecommendation.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-tatami-100 leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
           {/* Maintenance tips */}
           {material.maintenanceTips.length > 0 && (
             <FadeIn delay={0.3}>
@@ -241,6 +275,20 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
                     </li>
                   ))}
                 </ul>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 詳しいお手入れ方法 */}
+          {material.maintenanceGuide && (
+            <FadeIn delay={0.33}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">詳しいお手入れ方法</h2>
+                <div className="bg-white rounded-xl p-5 border border-tatami-100">
+                  {material.maintenanceGuide.split('\n\n').map((para, i) => (
+                    <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                  ))}
+                </div>
               </section>
             </FadeIn>
           )}

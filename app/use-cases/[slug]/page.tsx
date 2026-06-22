@@ -9,9 +9,16 @@ import Breadcrumb from '@/components/ui/Breadcrumb'
 import SummaryBox from '@/components/ui/SummaryBox'
 import RelatedLinks from '@/components/ui/RelatedLinks'
 import CTABanner from '@/components/ui/CTABanner'
-import { useCasesData, getUseCaseBySlug } from '@/lib/usecases-data'
+import { useCasesData, getUseCaseBySlug, type UseCaseData } from '@/lib/usecases-data'
 import { getServiceBySlug } from '@/lib/services-data'
 import IconByName from '@/components/ui/IconByName'
+
+type UseCaseDataExt = UseCaseData & {
+  realLifeScenario?: string
+  maintenanceTips?: string[]
+  proTips?: string[]
+  costConsiderations?: string
+}
 
 export function generateStaticParams() {
   return useCasesData.map((u) => ({ slug: u.slug }))
@@ -31,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function UseCaseDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
-  const useCase = getUseCaseBySlug(slug)
+  const useCase = getUseCaseBySlug(slug) as UseCaseDataExt | undefined
   if (!useCase) notFound()
 
   const relatedServiceItems = useCase.relatedServices
@@ -45,16 +52,19 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
       '@type': 'Article',
       headline: useCase.title,
       description: useCase.summary,
-      url: `https://takehara-tatami.com/use-cases/${useCase.slug}`,
+      url: `https://www.takeharatatamiten.com/use-cases/${useCase.slug}`,
+      datePublished: '2024-01-15',
+      dateModified: '2025-06-01',
       author: { '@type': 'Organization', name: '有限会社 竹原タタミ店' },
+      publisher: { '@type': 'Organization', name: '有限会社 竹原タタミ店', url: 'https://www.takeharatatamiten.com' },
     },
     {
       '@context': 'https://schema.org',
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://takehara-tatami.com' },
-        { '@type': 'ListItem', position: 2, name: '用途別の畳選び', item: 'https://takehara-tatami.com/use-cases' },
-        { '@type': 'ListItem', position: 3, name: useCase.title, item: `https://takehara-tatami.com/use-cases/${useCase.slug}` },
+        { '@type': 'ListItem', position: 1, name: 'トップ', item: 'https://www.takeharatatamiten.com' },
+        { '@type': 'ListItem', position: 2, name: '用途別の畳選び', item: 'https://www.takeharatatamiten.com/use-cases' },
+        { '@type': 'ListItem', position: 3, name: useCase.title, item: `https://www.takeharatatamiten.com/use-cases/${useCase.slug}` },
       ],
     },
     ...(useCase.faqs.length > 0 ? [{
@@ -159,6 +169,60 @@ export default async function UseCaseDetailPage({ params }: { params: Promise<{ 
                   </li>
                 ))}
               </ul>
+            </section>
+          )}
+
+          {/* こんな相談がありました（実例） */}
+          {useCase.realLifeScenario && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">こんなご相談がありました</h2>
+              <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                {useCase.realLifeScenario.split('\n\n').map((para, i) => (
+                  <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 日常のお手入れ */}
+          {useCase.maintenanceTips && useCase.maintenanceTips.length > 0 && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">日常のお手入れ</h2>
+              <div className="space-y-2">
+                {useCase.maintenanceTips.map((tip, i) => (
+                  <div key={i} className="flex items-start gap-3 p-3.5 bg-green-50 border border-green-100 rounded-xl">
+                    <span className="text-green-600 font-bold text-sm flex-shrink-0">{i + 1}</span>
+                    <span className="text-sm text-green-900">{tip}</span>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 職人からのアドバイス */}
+          {useCase.proTips && useCase.proTips.length > 0 && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">職人からのアドバイス</h2>
+              <div className="rounded-2xl bg-tatami-800 text-white p-6 space-y-2.5">
+                {useCase.proTips.map((tip, i) => (
+                  <div key={i} className="flex items-start gap-2.5">
+                    <span className="text-tatami-400 flex-shrink-0 mt-0.5">•</span>
+                    <p className="text-sm text-tatami-100 leading-relaxed">{tip}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+
+          {/* 費用の目安 */}
+          {useCase.costConsiderations && (
+            <section className="mt-10">
+              <h2 className="font-serif font-bold text-ink text-xl mb-4">費用の目安</h2>
+              <div className="bg-tatami-50 rounded-xl p-5 border border-tatami-100">
+                {useCase.costConsiderations.split('\n\n').map((para, i) => (
+                  <p key={i} className={`text-sm text-ink leading-relaxed ${i > 0 ? 'mt-3' : ''}`}>{para}</p>
+                ))}
+              </div>
             </section>
           )}
 
