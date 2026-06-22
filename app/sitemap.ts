@@ -3,6 +3,8 @@ import { areasData } from '@/lib/areas-data'
 import { problemsData } from '@/lib/problems-data'
 import { materialsData } from '@/lib/materials-data'
 import { servicesData } from '@/lib/services-data'
+import { useCasesData } from '@/lib/usecases-data'
+import { guidesData } from '@/lib/guide-data'
 
 const BASE_URL = 'https://takehara-tatami.com'
 
@@ -22,6 +24,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/problems`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE_URL}/materials`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${BASE_URL}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE_URL}/use-cases`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE_URL}/guide`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
   ]
 
   const areaPages: MetadataRoute.Sitemap = areasData.map(area => ({
@@ -52,11 +56,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }))
 
+  const useCasePages: MetadataRoute.Sitemap = useCasesData.map(u => ({
+    url: `${BASE_URL}/use-cases/${u.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
+  const guidePages: MetadataRoute.Sitemap = guidesData.map(g => ({
+    url: `${BASE_URL}/guide/${g.slug}`,
+    lastModified: now,
+    changeFrequency: 'monthly',
+    priority: 0.7,
+  }))
+
   return [
     ...staticPages,
     ...areaPages,
     ...problemPages,
     ...materialPages,
     ...servicePages,
+    ...useCasePages,
+    ...guidePages,
   ]
 }

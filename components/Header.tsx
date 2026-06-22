@@ -9,6 +9,8 @@ const NAV = [
   { label: '対応エリア', href: '/areas' },
   { label: 'お悩み別', href: '/problems' },
   { label: '素材', href: '/materials' },
+  { label: '用途別', href: '/use-cases' },
+  { label: 'ガイド', href: '/guide' },
   { label: '施工事例', href: '/works' },
   { label: 'ブログ', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
