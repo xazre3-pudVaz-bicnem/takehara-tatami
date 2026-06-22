@@ -39,7 +39,7 @@ export const guidesData: GuideData[] = [
     slug: 'omotegae-vs-shinchou',
     title: '表替えと新調の違い｜どちらを選ぶべきか徹底解説',
     titleEn: 'SURFACE REPLACEMENT VS. FULL REPLACEMENT',
-    icon: '🔄',
+    icon: 'RefreshCw',
     summary: '畳の「表替え」と「新調」の違いが分からない方へ。施工内容・費用・適したタイミング・見た目の変化を比較し、どちらを選ぶべきかを分かりやすく解説します。',
     conclusion: '畳床（芯材）がしっかりしている場合は表替えで十分です。沈み・へたり・波打ちがある場合は畳床の劣化が疑われるため、新調を検討してください。使用15〜20年が新調の一般的な目安です。迷ったら現地確認で職人が判断します。',
     sections: [
@@ -95,7 +95,7 @@ export const guidesData: GuideData[] = [
     slug: 'omotegae-vs-uragaeshi',
     title: '表替えと裏返しの違い｜使用年数と状態で選ぶ方法',
     titleEn: 'SURFACE REPLACEMENT VS. FLIPPING',
-    icon: '↩️',
+    icon: 'CornerDownLeft',
     summary: '畳の「表替え」と「裏返し」の違いを解説します。使用年数・畳の状態による選び方と、それぞれの費用・施工内容を分かりやすく比較します。',
     conclusion: '裏返しは使用3〜5年で、まだ傷みが少ない段階で行う最もリーズナブルなメンテナンスです。使用5〜10年で傷みが進んだ場合は表替えをご検討ください。裏返しは1回だけ可能で、その後は表替えが必要です。',
     sections: [
@@ -139,7 +139,7 @@ export const guidesData: GuideData[] = [
     slug: 'tatami-price',
     title: '畳の料金ガイド｜表替え・裏返し・新調の費用目安',
     titleEn: 'TATAMI PRICE GUIDE',
-    icon: '💴',
+    icon: 'Banknote',
     summary: '畳の表替え・裏返し・新調の費用目安を解説します。素材による価格の違い、料金を左右する要因、見積もり時の注意点まで分かりやすく説明します。',
     conclusion: '費用は素材・施工内容・サイズによって変わりますが、目安を知ることで不安なくご相談いただけます。お見積もりは現地確認無料ですのでお気軽にどうぞ。',
     sections: [
@@ -202,7 +202,7 @@ export const guidesData: GuideData[] = [
     slug: 'tatami-maintenance',
     title: '畳のお手入れ方法｜日常のケアから季節の対策まで',
     titleEn: 'TATAMI MAINTENANCE',
-    icon: '🧹',
+    icon: 'Sparkles',
     summary: '畳を長持ちさせるためのお手入れ方法を解説します。日常の掃除・水拭きの注意点・梅雨のカビ対策・家具を置く際の注意など、正しいケア方法をまとめました。',
     conclusion: '畳の基本ケアは「目に沿って掃除機」＋「乾いた布で乾拭き」です。水拭きは最小限に、漂白剤・カビ取りスプレーは使わないでください。鹿児島の梅雨・高温多湿環境では換気・除湿が特に重要です。',
     sections: [
@@ -264,7 +264,7 @@ export const guidesData: GuideData[] = [
     slug: 'tatami-life',
     title: '畳の寿命と交換時期の目安',
     titleEn: 'TATAMI LIFESPAN',
-    icon: '⏱️',
+    icon: 'Clock',
     summary: '畳の裏返し・表替え・新調それぞれの適切な時期を解説します。使用年数の目安と、状態から判断する方法を詳しく説明します。',
     conclusion: '裏返し：使用3〜5年、表替え：使用5〜10年、新調：使用15〜20年が一般的な目安です。ただし使用頻度・環境・素材によって大きく変わります。迷ったら現地確認で状態を確認します。',
     sections: [
@@ -316,7 +316,7 @@ export const guidesData: GuideData[] = [
     slug: 'tatami-before-moving',
     title: '引越し前後の畳｜退去時の費用・入居前の確認ポイント',
     titleEn: 'TATAMI BEFORE MOVING',
-    icon: '🚚',
+    icon: 'Truck',
     summary: '引越し前後の畳について解説します。賃貸退去時の費用負担の考え方、入居前に確認すべき畳の状態、退去に合わせた張替えの流れまで分かりやすく説明します。',
     conclusion: '賃貸退去時の畳の費用負担は、通常使用の範囲内であれば借主の負担にならない場合があります。入居時の状態・使用年数・傷の程度によって変わりますので、管理会社と事前に確認することが大切です。張替えが必要な場合は竹原タタミ店にご相談ください。',
     sections: [
@@ -363,7 +363,7 @@ export const guidesData: GuideData[] = [
     slug: 'tatami-after-rainy-season',
     title: '梅雨後の畳ケア｜鹿児島の高湿度環境での対策',
     titleEn: 'TATAMI AFTER RAINY SEASON',
-    icon: '🌧️',
+    icon: 'CloudRain',
     summary: '鹿児島の梅雨は高温多湿で、畳のカビ・ダニが最も発生しやすい時期です。梅雨明け後の畳の状態確認と、次の梅雨に備えるためのケア方法を解説します。',
     conclusion: '梅雨明け後は畳の状態を必ず確認してください。カビが発生している場合は早めに対処し、表替えが必要かどうか判断します。換気・除湿を習慣化することで、翌年の梅雨も乗り越えやすくなります。',
     sections: [

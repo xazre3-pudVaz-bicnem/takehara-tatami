@@ -14,6 +14,8 @@ export interface ProblemData {
   causes: string[]
   risks: string[]
   selfCare: string[]
+  doNotDo?: string[]
+  kagoshimaContext?: string
   whenToCall: string[]
   recommendedService: { slug: string; label: string }
   relatedProblems: string[]
@@ -31,7 +33,7 @@ export const problemsData: ProblemData[] = [
     title: '畳にカビが生えた',
     titleShort: 'カビ',
     titleEn: 'MOLD',
-    icon: '🍃',
+    icon: 'Leaf',
     conclusion: '畳のカビは、湿度65%以上・温度20〜30℃の環境で発生します。早期なら掃除で対処できますが、根が深い場合は表替えか新調が必要です。鹿児島の梅雨〜夏は特にリスクが高まります。',
     symptomDescription: '畳の表面に黒・緑・白などの点状のカビが現れます。触ると粉っぽい感触になったり、独特の黴臭さが出てきます。梅雨明けや長雨の後に多く見られます。',
     causes: [
@@ -51,6 +53,13 @@ export const problemsData: ProblemData[] = [
       '家具・布団を動かして定期的に通気する',
       'カビ取りスプレーはい草を傷める可能性があるため、必ず事前にご相談ください',
     ],
+    doNotDo: [
+      '塩素系漂白剤・カビ取りスプレーをそのまま使う（い草が変色・傷む）',
+      'カビ部分をゴシゴシこすって広げてしまう',
+      '乾燥せずに家具・布団を元に戻す',
+      '扇風機を直接当てて他の部屋にカビ胞子を拡散させる',
+    ],
+    kagoshimaContext: '鹿児島は梅雨から台風シーズン（6〜10月）にかけて高温多湿が続き、畳のカビリスクが特に高い地域です。湿度70%以上・気温20〜30℃がカビの繁殖適温で、鹿児島の夏はこの条件が何ヶ月も続きます。桜島の降灰後は換気に注意が必要で、窓を開けられない期間が続くと室内湿度が上昇しやすい傾向があります。',
     whenToCall: [
       '複数の部位にカビが広がっている',
       '拭き取っても繰り返し同じ場所にカビが生える',
@@ -77,7 +86,7 @@ export const problemsData: ProblemData[] = [
     title: '畳にダニが出た',
     titleShort: 'ダニ',
     titleEn: 'MITES',
-    icon: '🔍',
+    icon: 'Search',
     conclusion: 'ダニは梅雨〜夏に大量発生します。高温多湿の環境と、カビ・フケ・食べカスがエサになります。天日干しや掃除で数を減らせますが、根本解決には表替えが最も効果的です。',
     symptomDescription: '畳を踏んだ際にチクチクする感覚、布団を敷いていると体がかゆくなる、アレルギー症状が悪化するなどがダニの兆候です。ダニは肉眼ではほとんど見えません。',
     causes: [
@@ -97,6 +106,13 @@ export const problemsData: ProblemData[] = [
       '除湿器で室内の湿度を60%以下に保つ',
       '食べ物・ゴミを畳の上に放置しない',
     ],
+    doNotDo: [
+      'ダニ用スプレーを大量に使い、換気しないまま放置する',
+      '天日干しだけで終わらせる（死骸・アレルゲンが残る）',
+      '古い畳に布団をそのまま敷き続ける',
+      '扇風機で乾燥させると称して高湿度の空気を循環させる',
+    ],
+    kagoshimaContext: '鹿児島の梅雨〜夏はダニの絶好の繁殖期です。室温25〜30℃・湿度60〜80%という条件が数ヶ月続きます。桜島の降灰で窓を閉め切る期間が増えると換気不足になり、ダニが発生しやすくなります。南九州特有の亜熱帯性の湿気がダニを年間通じて活動しやすくします。',
     whenToCall: [
       '掃除・天日干しを繰り返してもかゆみが改善しない',
       '畳が古く（10年以上）、内部のダメージが疑われる',
@@ -123,7 +139,7 @@ export const problemsData: ProblemData[] = [
     title: '畳がささくれる・チクチクする',
     titleShort: 'ささくれ',
     titleEn: 'FRAYING',
-    icon: '✦',
+    icon: 'Scissors',
     conclusion: 'ささくれ（繊維のほつれ）は天然い草が傷んでいるサインです。使用5年を超えると表面が劣化してくることが多く、表替えで改善できます。素足での歩行が痛い場合は早めにご相談ください。',
     symptomDescription: '畳の表面が毛羽立ち、素足で歩くとチクチクする状態です。い草の繊維が立ち上がり、引っかかりや痛みを感じます。特に端の部分や日当たりの良い箇所で早く出やすいです。',
     causes: [
@@ -166,7 +182,7 @@ export const problemsData: ProblemData[] = [
     title: '畳が臭う・においが気になる',
     titleShort: 'においの悩み',
     titleEn: 'ODOR',
-    icon: '〰',
+    icon: 'Wind',
     conclusion: 'い草本来の青い香りは2〜3週間で落ち着きます。問題なのはカビ臭・湿気臭・ペット臭など異臭です。換気と乾燥が基本対策で、根本解決には表替えか新調が必要です。',
     symptomDescription: '和室に入るとカビのような臭い、湿った雨の日のような臭い、ペットの臭いが染み込んでいるなど、不快なにおいが気になる状態です。',
     causes: [
@@ -209,7 +225,7 @@ export const problemsData: ProblemData[] = [
     title: '畳がへこんだ・くぼみが気になる',
     titleShort: 'へこみ',
     titleEn: 'DENTS',
-    icon: '▼',
+    icon: 'TrendingDown',
     conclusion: '家具の跡のような軽いへこみは自然に戻ることがあります。畳床が傷んでいる場合は表替えでは解決せず、新調が必要です。深さ・場所・使用年数を確認して判断します。',
     symptomDescription: '重い家具（タンス・ベッドなど）を置いていた部分がくぼんでいる、特定の箇所だけ床が沈んでいる、畳全体がスポンジのように柔らかくなっているなどの状態です。',
     causes: [
@@ -252,7 +268,7 @@ export const problemsData: ProblemData[] = [
     title: '畳が変色した・黄ばんできた',
     titleShort: '変色・黄ばみ',
     titleEn: 'DISCOLORATION',
-    icon: '🎨',
+    icon: 'Palette',
     conclusion: '天然い草の色変化は自然な経年変化です。青→黄色→茶色と変わり、これはい草の正常な経年変化です。黄ばみ以上に茶色く変色してきたら表替えのサインです。',
     symptomDescription: '新しい畳の青々とした緑色が失われ、黄色みがかってきたり、茶色・黒っぽく変色してきたりしている状態です。全体的に色が変わる場合と、日当たりの違いで部分的に変色する場合があります。',
     causes: [
@@ -293,7 +309,7 @@ export const problemsData: ProblemData[] = [
     title: '畳が沈む・柔らかくなった',
     titleShort: '沈み・へたり',
     titleEn: 'SINKING',
-    icon: '↓',
+    icon: 'ArrowDown',
     conclusion: '畳が踏むたびに沈む感触は、畳床（芯材）の劣化サインです。表替えでは改善できず、新調が必要です。特に15年以上使用した畳は早めのご相談をお勧めします。',
     symptomDescription: '畳を踏むとふかふかと沈む、スポンジのように柔らかい、ある場所だけ特に沈むといった状態です。歩くたびに畳が音を立てることもあります。',
     causes: [
@@ -335,7 +351,7 @@ export const problemsData: ProblemData[] = [
     title: '畳の隙間が気になる',
     titleShort: '隙間',
     titleEn: 'GAPS',
-    icon: '↔',
+    icon: 'ArrowLeftRight',
     conclusion: '畳の隙間は乾燥による収縮や、畳床の変形で生じます。軽微なものは隙間テープで対処できますが、変形が大きい場合は新調が必要です。',
     symptomDescription: '畳と畳の間に隙間ができている、畳と壁の間に大きな隙間がある、隙間にホコリやゴミが溜まるという状態です。',
     causes: [
@@ -375,7 +391,7 @@ export const problemsData: ProblemData[] = [
     title: '畳が日焼けした',
     titleShort: '日焼け',
     titleEn: 'SUN FADING',
-    icon: '☀',
+    icon: 'Sun',
     conclusion: '日焼けによる変色は自然な経年変化ですが、紫外線によるい草の繊維劣化も伴います。色むらが気になる・ざらつきが出てきたら表替えのタイミングです。',
     symptomDescription: '窓際の畳が特に白っぽく・茶色く変色している、カーテンの跡が畳についているなど、日光の当たり方の違いで色むらが出ている状態です。',
     causes: [
@@ -413,7 +429,7 @@ export const problemsData: ProblemData[] = [
     title: '畳が波打つ・反っている',
     titleShort: '波打ち・反り',
     titleEn: 'WARPING',
-    icon: '〜',
+    icon: 'Waves',
     conclusion: '畳の波打ちは畳床の変形が原因です。表替えでは改善しません。新調が必要なケースがほとんどですが、まず現地で確認させてください。',
     symptomDescription: '畳の表面が波のように凸凹している、畳の端が反り上がっている、畳の一部が浮き上がっているという状態です。',
     causes: [
@@ -450,7 +466,7 @@ export const problemsData: ProblemData[] = [
     title: '畳の交換時期が分からない',
     titleShort: '交換時期',
     titleEn: 'REPLACEMENT TIMING',
-    icon: '📅',
+    icon: 'Calendar',
     conclusion: '一般的な交換目安：裏返し3〜5年、表替え5〜10年、新調15〜20年。ただし使用環境や素材により大きく変わります。「なんとなく気になってきた」が交換のサインです。',
     symptomDescription: '畳を使い始めてから何年経ったか分からない、見た目は普通だが何か変な気がする、いつ交換すればいいか判断できないといった状況です。',
     causes: [],
@@ -488,7 +504,7 @@ export const problemsData: ProblemData[] = [
     title: '畳の正しい掃除方法を知りたい',
     titleShort: '掃除方法',
     titleEn: 'CLEANING',
-    icon: '🧹',
+    icon: 'Sparkles',
     conclusion: '畳掃除の基本は「目に沿って掃除機」＋「乾いた布で乾拭き」です。水拭きは最小限に、カビ取りスプレー・漂白剤は使わないでください。',
     symptomDescription: '畳の掃除方法が分からない、何を使えばいいか分からない、やってはいけないことを知りたいという方向けの情報です。',
     causes: [],
@@ -526,7 +542,7 @@ export const problemsData: ProblemData[] = [
     title: '畳に湿気・シミが気になる',
     titleShort: '湿気・シミ',
     titleEn: 'MOISTURE & STAINS',
-    icon: '💧',
+    icon: 'Droplets',
     conclusion: '畳の湿気・シミは早期対処が重要です。湿気はカビ・ダニの温床になり、シミは放置すると繊維に定着して取れにくくなります。軽度なら乾燥・拭き取りで対処できますが、根深い場合は表替えが必要です。',
     symptomDescription: '畳に水分が染み込んでシミになっている、湿気でじっとりした感触がある、梅雨時期や雨の後に湿気が取れない、飲み物・食べ物をこぼした跡が残っているなどの状態です。',
     causes: [
@@ -576,7 +592,7 @@ export const problemsData: ProblemData[] = [
     title: 'ペットの爪で畳が傷んだ',
     titleShort: 'ペットの爪傷',
     titleEn: 'PET SCRATCHES',
-    icon: '🐾',
+    icon: 'PawPrint',
     conclusion: 'ペットの爪傷は、軽度なら経過観察、深い傷や広範囲に及ぶ場合は表替えをご検討ください。今後のために耐爪性の高い和紙畳・樹脂畳への変更も選択肢の一つです。',
     symptomDescription: '犬や猫などペットの爪で畳の表面が引っかかれ、い草の繊維がほつれたり、傷が入ったりしている状態です。ささくれや繊維のほつれがあると、ペット自身も足を引っかけることがあります。',
     causes: [

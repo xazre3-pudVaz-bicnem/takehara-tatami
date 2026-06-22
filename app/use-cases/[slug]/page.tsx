@@ -11,6 +11,7 @@ import RelatedLinks from '@/components/ui/RelatedLinks'
 import CTABanner from '@/components/ui/CTABanner'
 import { useCasesData, getUseCaseBySlug } from '@/lib/usecases-data'
 import { getServiceBySlug } from '@/lib/services-data'
+import IconByName from '@/components/ui/IconByName'
 
 export function generateStaticParams() {
   return useCasesData.map((u) => ({ slug: u.slug }))
@@ -85,7 +86,7 @@ export default function UseCaseDetailPage({ params }: { params: { slug: string }
           ]} />
 
           {/* Summary box */}
-          <SummaryBox title={`${useCase.icon} ${useCase.titleShort}の畳選びポイント`}>
+          <SummaryBox title={`${useCase.titleShort}の畳選びポイント`}>
             <p className="text-sm leading-relaxed text-ink/80">{useCase.description}</p>
           </SummaryBox>
 
@@ -210,9 +211,9 @@ export default function UseCaseDetailPage({ params }: { params: { slug: string }
                   <Link
                     key={u.slug}
                     href={`/use-cases/${u.slug}`}
-                    className="flex items-center gap-1 px-3 py-1.5 bg-tatami-50 border border-tatami-100 rounded-full text-xs text-ink hover:border-tatami-400 transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 bg-tatami-50 border border-tatami-100 rounded-full text-xs text-ink hover:border-tatami-400 transition-colors"
                   >
-                    <span>{u.icon}</span>
+                    <IconByName name={u.icon} size={12} className="text-tatami-500" />
                     <span>{u.titleShort}</span>
                   </Link>
                 ))}

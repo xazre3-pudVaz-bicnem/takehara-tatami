@@ -154,6 +154,35 @@ export default function ProblemDetailPage({ params }: { params: { slug: string }
             </FadeIn>
           )}
 
+          {/* やってはいけない対処 */}
+          {problem.doNotDo && problem.doNotDo.length > 0 && (
+            <FadeIn delay={0.22}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">やってはいけない対処</h2>
+                <div className="bg-amber-50 border border-amber-100 rounded-xl p-4 space-y-2">
+                  {problem.doNotDo.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <span className="text-amber-500 font-bold flex-shrink-0 mt-0.5">✕</span>
+                      <span className="text-sm text-amber-900">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
+          {/* 鹿児島の気候との関係 */}
+          {problem.kagoshimaContext && (
+            <FadeIn delay={0.24}>
+              <section className="mb-10">
+                <h2 className="font-serif text-xl font-bold text-ink mb-4">鹿児島の気候との関係</h2>
+                <div className="bg-tatami-50 rounded-xl p-4 border border-tatami-100">
+                  <p className="text-sm text-ink leading-relaxed">{problem.kagoshimaContext}</p>
+                </div>
+              </section>
+            </FadeIn>
+          )}
+
           {/* 業者に相談すべきタイミング */}
           {problem.whenToCall.length > 0 && (
             <FadeIn delay={0.25}>

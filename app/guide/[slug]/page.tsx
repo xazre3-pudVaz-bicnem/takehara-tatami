@@ -11,6 +11,7 @@ import RelatedLinks from '@/components/ui/RelatedLinks'
 import CTABanner from '@/components/ui/CTABanner'
 import { guidesData, getGuideBySlug } from '@/lib/guide-data'
 import { getServiceBySlug } from '@/lib/services-data'
+import IconByName from '@/components/ui/IconByName'
 
 export function generateStaticParams() {
   return guidesData.map((g) => ({ slug: g.slug }))
@@ -85,7 +86,7 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
           ]} />
 
           {/* Summary box */}
-          <SummaryBox title={`${guide.icon} このガイドのポイント`}>
+          <SummaryBox title="このガイドのポイント">
             <p className="text-sm leading-relaxed text-ink/80">{guide.summary}</p>
           </SummaryBox>
 
@@ -196,9 +197,9 @@ export default function GuideDetailPage({ params }: { params: { slug: string } }
                     <Link
                       key={slug}
                       href={`/guide/${slug}`}
-                      className="flex items-center gap-1 px-3 py-1.5 bg-tatami-50 border border-tatami-100 rounded-full text-xs text-ink hover:border-tatami-400 transition-colors"
+                      className="flex items-center gap-1.5 px-3 py-1.5 bg-tatami-50 border border-tatami-100 rounded-full text-xs text-ink hover:border-tatami-400 transition-colors"
                     >
-                      <span>{related.icon}</span>
+                      <IconByName name={related.icon} size={12} className="text-tatami-500" />
                       <span>{related.title}</span>
                     </Link>
                   )

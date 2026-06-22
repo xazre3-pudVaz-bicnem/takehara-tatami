@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
+import IconByName from '@/components/ui/IconByName'
 import { materialsData } from '@/lib/materials-data'
 
 export const metadata: Metadata = {
@@ -54,7 +55,9 @@ export default function MaterialsPage() {
                   className="group block p-6 md:p-8 bg-tatami-800 rounded-2xl hover:bg-tatami-700 transition-colors"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="text-3xl">{featured.icon}</span>
+                    <div className="w-12 h-12 rounded-xl bg-white/10 flex items-center justify-center flex-shrink-0">
+                      <IconByName name={featured.icon} size={24} className="text-tatami-200" />
+                    </div>
                     <div>
                       <p className="text-tatami-300 text-xs tracking-wider mb-1">RECOMMENDED</p>
                       <h2 className="font-serif text-white text-xl md:text-2xl font-bold mb-2">{featured.name}</h2>
@@ -78,7 +81,9 @@ export default function MaterialsPage() {
                     className="group p-5 bg-white border border-tatami-100 rounded-2xl hover:border-tatami-400 hover:shadow-sm transition-all"
                   >
                     <div className="flex items-start gap-3">
-                      <span className="text-2xl">{material.icon}</span>
+                      <div className="w-10 h-10 rounded-xl bg-tatami-50 border border-tatami-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <IconByName name={material.icon} size={20} className="text-tatami-600" />
+                      </div>
                       <div>
                         <p className="font-serif font-bold text-ink text-base group-hover:text-tatami-600 transition-colors">{material.name}</p>
                         <p className="text-muted text-xs mt-1 leading-relaxed">{material.tagline}</p>
@@ -102,7 +107,9 @@ export default function MaterialsPage() {
                   className="group flex items-center justify-between p-5 bg-tatami-50 border border-tatami-200 rounded-2xl hover:border-tatami-400 transition-colors"
                 >
                   <div className="flex items-center gap-3">
-                    <span className="text-2xl">{comparison.icon}</span>
+                    <div className="w-10 h-10 rounded-xl bg-tatami-100 flex items-center justify-center flex-shrink-0">
+                      <IconByName name={comparison.icon} size={20} className="text-tatami-600" />
+                    </div>
                     <div>
                       <p className="font-serif font-bold text-ink">{comparison.name}</p>
                       <p className="text-muted text-sm mt-0.5">{comparison.tagline}</p>

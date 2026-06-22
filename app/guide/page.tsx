@@ -5,6 +5,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
 import CTABanner from '@/components/ui/CTABanner'
+import IconByName from '@/components/ui/IconByName'
 import { guidesData } from '@/lib/guide-data'
 
 export const metadata: Metadata = {
@@ -60,7 +61,9 @@ export default function GuidePage() {
                   href={`/guide/${guide.slug}`}
                   className="group flex gap-4 p-5 border border-tatami-100 rounded-2xl hover:border-tatami-400 hover:shadow-sm transition-all bg-white"
                 >
-                  <div className="text-3xl flex-shrink-0 mt-0.5">{guide.icon}</div>
+                  <div className="w-11 h-11 rounded-xl bg-tatami-50 border border-tatami-100 flex items-center justify-center flex-shrink-0">
+                    <IconByName name={guide.icon} size={22} className="text-tatami-600" />
+                  </div>
                   <div className="flex-1 min-w-0">
                     <h2 className="font-serif font-bold text-ink text-sm leading-snug mb-2">{guide.title}</h2>
                     <p className="text-muted text-xs leading-relaxed line-clamp-2">{guide.summary}</p>

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
+import IconByName from '@/components/ui/IconByName'
 import { problemsData } from '@/lib/problems-data'
 
 export const metadata: Metadata = {
@@ -47,7 +48,9 @@ export default function ProblemsPage() {
                   className="group p-5 bg-white border border-tatami-100 rounded-2xl hover:border-tatami-400 hover:shadow-md transition-all"
                 >
                   <div className="flex items-start gap-3">
-                    <span className="text-2xl flex-shrink-0">{problem.icon}</span>
+                    <div className="w-10 h-10 rounded-xl bg-tatami-50 border border-tatami-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                      <IconByName name={problem.icon} size={20} className="text-tatami-600" />
+                    </div>
                     <div>
                       <p className="font-serif font-bold text-ink text-base group-hover:text-tatami-600 transition-colors">
                         {problem.title}
