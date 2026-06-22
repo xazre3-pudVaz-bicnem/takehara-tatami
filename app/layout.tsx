@@ -34,32 +34,81 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 }
 
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'HomeAndConstructionBusiness',
-  name: SITE_NAME,
-  description: SITE_DESCRIPTION,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '東谷山2丁目35-15',
-    addressLocality: '鹿児島市',
-    addressRegion: '鹿児島県',
-    postalCode: '891-0105',
-    addressCountry: 'JP',
-  },
-  telephone: '099-267-1577',
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '08:30',
-      closes: '18:00',
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    '@id': 'https://takehara-tatami.com/#localbusiness',
+    name: '有限会社 竹原タタミ店',
+    alternateName: '竹原タタミ店',
+    description: SITE_DESCRIPTION,
+    url: 'https://takehara-tatami.com',
+    logo: 'https://takehara-tatami.com/images/hero-tatami.jpg',
+    image: 'https://takehara-tatami.com/images/hero-tatami.jpg',
+    telephone: '099-267-1577',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '東谷山2丁目35-15',
+      addressLocality: '鹿児島市',
+      addressRegion: '鹿児島県',
+      postalCode: '891-0105',
+      addressCountry: 'JP',
     },
-  ],
-  geo: { '@type': 'GeoCoordinates', latitude: 31.5334, longitude: 130.5236 },
-  priceRange: '¥¥',
-  areaServed: { '@type': 'City', name: '鹿児島市' },
-}
+    geo: { '@type': 'GeoCoordinates', latitude: 31.5334, longitude: 130.5236 },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:30',
+        closes: '18:00',
+      },
+    ],
+    priceRange: '¥¥',
+    areaServed: [
+      { '@type': 'AdministrativeArea', name: '鹿児島県' },
+      { '@type': 'City', name: '鹿児島市' },
+    ],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: '畳の施工サービス',
+      itemListElement: [
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '表替え', description: '畳の表面（い草）と縁を新しく交換します' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '裏返し', description: '畳表を裏返して使用するリーズナブルなメンテナンス' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '新調', description: '畳床・畳表・縁を全て新品に交換します' } },
+        { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '縁なし畳', description: '和モダンスタイルの縁なし畳' } },
+      ],
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    '@id': 'https://takehara-tatami.com/#organization',
+    name: '有限会社 竹原タタミ店',
+    url: 'https://takehara-tatami.com',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '099-267-1577',
+      contactType: 'customer service',
+      areaServed: 'JP',
+      availableLanguage: 'Japanese',
+      hoursAvailable: {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '08:30',
+        closes: '18:00',
+      },
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://takehara-tatami.com/#website',
+    url: 'https://takehara-tatami.com',
+    name: SITE_NAME,
+    description: SITE_DESCRIPTION,
+    inLanguage: 'ja',
+  },
+]
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -71,10 +120,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap"
         />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        {jsonLd.map((schema, i) => (
+          <script
+            key={i}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
       </head>
       <body className="font-sans antialiased text-ink bg-white">
         <NavigationProgress />

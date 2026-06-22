@@ -3,40 +3,13 @@
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useState, useRef } from 'react'
 import { ChevronDown } from 'lucide-react'
+import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import PageHero from '@/components/ui/PageHero'
+import { extendedFaqs, extendedCategories, type ExtendedCategoryId } from '@/lib/faq-data'
 
-const categories = [
-  { id: 'all', label: 'すべて' },
-  { id: 'price', label: '料金' },
-  { id: 'work', label: '施工' },
-  { id: 'area', label: '対応エリア' },
-  { id: 'modern', label: '縁なし・琉球畳' },
-  { id: 'consult', label: 'ご相談' },
-] as const
-
-type CategoryId = (typeof categories)[number]['id']
-
-const faqs = [
-  { cat: 'price', q: '見積もりだけでもお願いできますか？', a: 'もちろん大丈夫です。現地確認・お見積もりは完全無料です。見積もりをご覧いただいてからご検討いただいて構いません。「まだ迷っている」という段階でも喜んでご対応いたします。' },
-  { cat: 'price', q: '料金はどうやって決まりますか？', a: '畳のサイズ・素材・施工内容（表替え・裏返し・新調など）によって異なります。現地確認後にお見積もりをご提示します。事前に概算をお知らせすることも可能ですので、お気軽にお問い合わせください。' },
-  { cat: 'price', q: '支払い方法は何がありますか？', a: '現金払いが基本ですが、詳しくはお問い合わせ時にご確認ください。' },
-  { cat: 'work', q: '表替えと新調の違いは何ですか？', a: '表替えは畳の芯（畳床）はそのままに、表面のい草（畳表）と縁のみを新しくする施工です。新調は畳床・畳表・縁のすべてを新品に交換します。芯が傷んでいない場合は表替えでも十分なことが多く、費用も抑えられます。' },
-  { cat: 'work', q: '何枚から対応してもらえますか？', a: '1枚からでも対応しております。「1室だけ直したい」「1枚だけ傷んでいる」という場合もお気軽にご相談ください。枚数が少なくても丁寧に対応いたします。' },
-  { cat: 'work', q: '施工にはどのくらい時間がかかりますか？', a: '表替えや裏返しは通常6〜8畳で半日〜1日程度です。新調は素材の手配も含めて数日いただく場合があります。お急ぎの場合はご相談ください。' },
-  { cat: 'work', q: '日曜・祝日は対応していますか？', a: '基本的に日曜・祝日は定休日とさせていただいております。ただし、事前にご相談いただければ対応できる場合もございます。詳しくはお電話にてご確認ください。' },
-  { cat: 'work', q: 'ふすまや障子の張替えも対応していますか？', a: '申し訳ございませんが、当店は畳専門店のため、ふすま・障子・網戸・内装リフォームには対応しておりません。畳に関することでしたら何でもお気軽にご相談ください。' },
-  { cat: 'area', q: '鹿児島市以外も対応していますか？', a: '鹿児島県内全域を対応エリアとしております。鹿児島市内は特に迅速に対応いたします。県内各地からのご依頼もお気軽にご相談ください。' },
-  { cat: 'area', q: '対応エリアはどこですか？', a: '鹿児島県内全域に対応しています。鹿児島市内は迅速対応いたします。東谷山・谷山・宇宿・中山・紫原・坂之上・和田・郡元・武岡・草牟田・吉野・小松原などが主な対応エリアです。県内各地からもお気軽にご相談ください。' },
-  { cat: 'modern', q: '縁なし畳はどんな部屋に向いていますか？', a: '縁なし畳はシンプルでモダンな印象が特徴で、洋室の雰囲気にも合います。フローリングと組み合わせたLDKや、スタイリッシュな寝室に人気です。正方形の畳を市松模様に配置することで独特の美しさが生まれます。' },
-  { cat: 'modern', q: '琉球畳と縁なし畳の違いは何ですか？', a: '琉球畳は本来、沖縄産の七島藺（しちとうい）を使った縁なし畳を指します。現在は「琉球畳風」として、い草・和紙・樹脂などで同様のスタイルを再現できます。縁なし畳は素材を問わず縁のない畳全般を指すことが多いです。' },
-  { cat: 'modern', q: 'カラー・素材は選べますか？', a: 'はい。和紙畳・樹脂畳ではグレー・ブラウン・ベージュなどのカラーをお選びいただけます。サンプルを見ながらご決定いただけます。' },
-  { cat: 'consult', q: 'どのタイミングで相談すればいいですか？', a: '畳の色が変わってきた・チクチクするなど気になり始めたら、ぜひ一度ご相談ください。状態によって裏返し・表替え・新調の中から最適な施工をご提案します。早めに相談いただくほど選択肢が広がります。' },
-  { cat: 'consult', q: '写真を送るだけで見積もりできますか？', a: '写真で概算をお伝えすることは可能ですが、正確な見積もりには現地確認が必要です。まずはお気軽に写真をお送りください（お問い合わせフォームまたはお電話）。' },
-]
-
-function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
+function FAQItem({ q, a, link, index }: { q: string; a: string; link?: { href: string; label: string }; index: number }) {
   const [open, setOpen] = useState(false)
   const ref = useRef(null)
   const inView = useInView(ref, { once: true, margin: '-30px' })
@@ -46,7 +19,7 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
       className="border-b border-tatami-100 last:border-0"
       initial={{ opacity: 0, y: 10 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.4, delay: (index % 5) * 0.06 }}
+      transition={{ duration: 0.4, delay: (index % 6) * 0.05 }}
     >
       <button
         onClick={() => setOpen(!open)}
@@ -69,7 +42,14 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
           >
             <div className="flex gap-4 pb-5 px-2">
               <span className="flex-shrink-0 w-6 h-6 bg-tatami-100 text-tatami-600 text-[10px] font-bold rounded-full flex items-center justify-center mt-0.5">A</span>
-              <p className="text-muted text-sm leading-relaxed">{a}</p>
+              <div>
+                <p className="text-muted text-sm leading-relaxed">{a}</p>
+                {link && (
+                  <Link href={link.href} className="mt-2 inline-flex items-center gap-1 text-tatami-600 text-xs hover:underline">
+                    {link.label} →
+                  </Link>
+                )}
+              </div>
             </div>
           </motion.div>
         )}
@@ -79,34 +59,53 @@ function FAQItem({ q, a, index }: { q: string; a: string; index: number }) {
 }
 
 export default function FAQPage() {
-  const [active, setActive] = useState<CategoryId>('all')
-  const filtered = active === 'all' ? faqs : faqs.filter(f => f.cat === active)
+  const [active, setActive] = useState<ExtendedCategoryId>('all')
+  const filtered = active === 'all' ? extendedFaqs : extendedFaqs.filter(f => f.cat === active)
+
+  const faqJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: extendedFaqs.map(f => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  }
 
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Header />
       <main>
         <PageHero
           en="FAQ"
           ja="よくあるご質問"
-          description="畳の張替え・新調・縁なし畳など、よくいただくご質問をまとめました。"
+          description={`畳の張替え・新調・素材・カビ・ダニ・対応エリアなど、よくいただくご質問を${extendedFaqs.length}問以上まとめました。`}
         />
 
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            {/* Count badge */}
+            <div className="text-center mb-8">
+              <span className="inline-flex items-center gap-2 bg-tatami-50 border border-tatami-200 text-tatami-600 text-xs px-4 py-1.5 rounded-full">
+                全{extendedFaqs.length}問
+              </span>
+            </div>
+
             {/* Category filter */}
             <div className="flex flex-wrap gap-2 mb-10">
-              {categories.map(cat => (
+              {extendedCategories.map(cat => (
                 <button
                   key={cat.id}
                   onClick={() => setActive(cat.id)}
-                  className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  className={`px-3.5 py-1.5 rounded-full text-xs font-medium transition-colors ${
                     active === cat.id
                       ? 'bg-tatami-400 text-white'
                       : 'bg-tatami-50 border border-tatami-200 text-ink hover:border-tatami-400'
                   }`}
                 >
                   {cat.label}
+                  {active !== 'all' && cat.id === 'all' && ''}
                 </button>
               ))}
             </div>
@@ -120,15 +119,43 @@ export default function FAQPage() {
                 transition={{ duration: 0.25 }}
               >
                 <div className="bg-white border border-tatami-100 rounded-2xl shadow-sm px-4 md:px-8 py-2">
-                  {filtered.map((faq, i) => (
-                    <FAQItem key={`${active}-${i}`} q={faq.q} a={faq.a} index={i} />
-                  ))}
+                  {filtered.length === 0 ? (
+                    <p className="text-muted text-sm py-8 text-center">このカテゴリのご質問はありません。</p>
+                  ) : (
+                    filtered.map((faq, i) => (
+                      <FAQItem key={`${active}-${i}`} q={faq.q} a={faq.a} link={faq.link} index={i} />
+                    ))
+                  )}
                 </div>
               </motion.div>
             </AnimatePresence>
 
+            {/* Quick decision guide */}
             <motion.div
-              className="text-center mt-14"
+              className="mt-12 bg-tatami-50 rounded-2xl p-6 border border-tatami-100"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-tatami-400 text-[10px] tracking-widest mb-3 text-center uppercase">Quick Guide</p>
+              <h3 className="font-serif text-ink text-lg font-bold text-center mb-4">どれを選べばいいか迷ったら</h3>
+              <div className="space-y-2">
+                {[
+                  { cond: '使用3〜5年 / 表面の色褪せ・少しのチクチク', rec: '→ 裏返し', href: '/services/uragaeshi' },
+                  { cond: '使用5〜10年 / 変色・ささくれ・臭いが気になる', rec: '→ 表替え', href: '/services/omotegae' },
+                  { cond: '使用15年以上 / 踏むと沈む・波打つ', rec: '→ 新調', href: '/services/shincho' },
+                  { cond: '和モダンにしたい / フローリングと合わせたい', rec: '→ 縁なし畳', href: '/services/herinashi' },
+                ].map((item, i) => (
+                  <Link key={i} href={item.href} className="flex items-center justify-between p-3 bg-white rounded-xl border border-tatami-100 hover:border-tatami-400 transition-colors group">
+                    <span className="text-muted text-xs">{item.cond}</span>
+                    <span className="text-tatami-600 text-xs font-bold group-hover:text-tatami-800 transition-colors flex-shrink-0 ml-2">{item.rec}</span>
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="text-center mt-12"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

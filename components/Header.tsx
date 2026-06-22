@@ -6,8 +6,9 @@ import Link from 'next/link'
 
 const NAV = [
   { label: 'サービス', href: '/services' },
-  { label: '畳について', href: '/tatami' },
-  { label: '畳縁について', href: '/tatami-beri' },
+  { label: '対応エリア', href: '/areas' },
+  { label: 'お悩み別', href: '/problems' },
+  { label: '素材', href: '/materials' },
   { label: '施工事例', href: '/works' },
   { label: 'ブログ', href: '/blog' },
   { label: 'FAQ', href: '/faq' },
