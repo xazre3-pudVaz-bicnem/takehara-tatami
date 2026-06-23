@@ -9,12 +9,13 @@ import { BlogListClient } from './_components/BlogListClient'
 // データ fetch だけ Client Component (BlogListClient) に切り出して
 // ここは Server Component シェルとして維持する。
 export const metadata: Metadata = {
-  title: 'ブログ | 竹原タタミ店',
+  title: '鹿児島の畳ブログ｜お手入れ・選び方・施工事例',
   description:
-    '畳のお手入れ・選び方・施工事例など、役立つ情報を発信しています。鹿児島の畳職人が畳の知識をわかりやすくお届けします。',
+    '鹿児島の畳専門店・竹原タタミ店による畳ブログ。畳のカビ対策・お手入れ方法・素材の選び方・施工事例など、鹿児島の気候に合わせた畳の知識をお届けします。',
+  keywords: ['鹿児島 畳 ブログ', '畳 お手入れ 鹿児島', '畳 カビ対策 鹿児島', '畳 素材 選び方', '竹原タタミ店 ブログ'],
   openGraph: {
-    title: 'ブログ | 竹原タタミ店',
-    description: '畳のお手入れ・選び方・施工事例など、役立つ情報を発信しています。',
+    title: '鹿児島の畳ブログ｜お手入れ・選び方・施工事例｜竹原タタミ店',
+    description: '鹿児島の畳職人が畳のカビ対策・お手入れ・素材選びを解説。',
     type: 'website',
   },
 }
