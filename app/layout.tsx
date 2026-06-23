@@ -107,6 +107,12 @@ const jsonLd = [
     name: SITE_NAME,
     description: SITE_DESCRIPTION,
     inLanguage: 'ja',
+    publisher: { '@id': 'https://www.takeharatatamiten.com/#organization' },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: { '@type': 'EntryPoint', urlTemplate: 'https://www.takeharatatamiten.com/faq?q={search_term_string}' },
+      'query-input': 'required name=search_term_string',
+    },
   },
 ]
 
