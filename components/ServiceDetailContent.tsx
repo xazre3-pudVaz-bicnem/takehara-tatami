@@ -263,6 +263,53 @@ export default function ServiceDetailContent({ service, related }: { service: Se
         </div>
       </section>
 
+      {/* Local Context */}
+      {service.localContext && (
+        <section className="py-16 md:py-20 bg-tatami-50">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <FadeIn>
+              <p className="text-tatami-400 text-[10px] tracking-widest mb-2">LOCAL</p>
+              <h2 className="font-serif font-bold text-ink text-2xl mb-5">鹿児島市での{service.title}について</h2>
+              <div className="bg-white rounded-2xl p-6 border border-tatami-100 shadow-sm">
+                <p className="text-ink/80 text-sm leading-loose">
+                  {service.localContext}
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
+      {/* Price Detail */}
+      {service.priceDetail && (
+        <section className="py-16 md:py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <FadeIn>
+              <p className="text-tatami-400 text-[10px] tracking-widest mb-2">PRICE DETAIL</p>
+              <h2 className="font-serif font-bold text-ink text-2xl mb-5">料金の詳細</h2>
+              <div className="bg-tatami-50 rounded-2xl p-6 border border-tatami-100">
+                {(service.priceDetail ?? '').split('\n').map((line, i) => {
+                  if (line.startsWith('【') || line.startsWith('・')) {
+                    return line.startsWith('【') ? (
+                      <p key={i} className="font-serif font-bold text-ink text-sm mt-4 first:mt-0">{line}</p>
+                    ) : (
+                      <div key={i} className="flex items-baseline gap-2 mt-1.5 ml-2">
+                        <span className="text-tatami-400 flex-shrink-0 text-xs">•</span>
+                        <span className="text-ink text-sm">{line.slice(1)}</span>
+                      </div>
+                    )
+                  }
+                  return line ? <p key={i} className="text-muted text-xs mt-3">{line}</p> : null
+                })}
+              </div>
+              <p className="text-muted text-xs mt-3 text-center">
+                現地確認・お見積もりは完全無料です。まずはお気軽にお問い合わせください。
+              </p>
+            </FadeIn>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       <section className="py-16 md:py-20 bg-white">
         <div className="max-w-3xl mx-auto px-6 sm:px-8">
@@ -277,6 +324,22 @@ export default function ServiceDetailContent({ service, related }: { service: Se
           </div>
         </div>
       </section>
+
+      {/* Extended FAQs */}
+      {Array.isArray(service.extendedFaqs) && service.extendedFaqs.length > 0 && (
+        <section className="py-8 bg-white border-t border-tatami-50">
+          <div className="max-w-3xl mx-auto px-6 sm:px-8">
+            <FadeIn>
+              <h2 className="font-serif font-bold text-ink text-xl mb-6 text-center">鹿児島でよくいただくご質問</h2>
+            </FadeIn>
+            <div className="bg-white border border-tatami-100 rounded-2xl shadow-sm px-4 md:px-8 py-2">
+              {service.extendedFaqs.map((faq, i) => (
+                <FAQItem key={`ext-${i}`} q={faq.q} a={faq.a} index={i} />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* CTA */}
       <section className="py-16 bg-tatami-50">
@@ -335,6 +398,40 @@ export default function ServiceDetailContent({ service, related }: { service: Se
           </div>
         </section>
       )}
+
+      {/* Area Links */}
+      <section className="py-12 bg-tatami-50 border-t border-tatami-100">
+        <div className="max-w-5xl mx-auto px-6 sm:px-8">
+          <FadeIn>
+            <p className="text-tatami-400 text-[10px] tracking-widest mb-2 text-center">SERVICE AREA</p>
+            <h2 className="font-serif font-bold text-ink text-xl mb-6 text-center">対応エリア</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+              {[
+                { href: '/areas/kagoshima-city', label: '鹿児島市全域' },
+                { href: '/areas/kirishima', label: '霧島市' },
+                { href: '/areas/aira', label: '姶良市' },
+                { href: '/areas/ibusuki', label: '指宿市' },
+                { href: '/areas/hioki', label: '日置市' },
+                { href: '/areas/kanoya', label: '鹿屋市' },
+                { href: '/areas/satsumasendai', label: '薩摩川内市' },
+                { href: '/areas/minamikyushu', label: '南九州市' },
+              ].map(area => (
+                <Link
+                  key={area.href}
+                  href={area.href}
+                  className="flex items-center justify-center px-4 py-2.5 bg-white border border-tatami-100 rounded-xl text-sm text-ink hover:border-tatami-400 hover:text-tatami-600 transition-colors text-center"
+                >
+                  {area.label}
+                </Link>
+              ))}
+            </div>
+            <p className="text-center text-muted text-xs">
+              鹿児島県内全域対応。鹿児島市内は特に迅速に対応いたします。
+              <Link href="/areas" className="text-tatami-500 hover:underline ml-1">対応エリア一覧 →</Link>
+            </p>
+          </FadeIn>
+        </div>
+      </section>
     </>
   )
 }
