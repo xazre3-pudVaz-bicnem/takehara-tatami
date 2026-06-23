@@ -36,10 +36,10 @@ export default function Footer() {
               鹿児島市東谷山で畳の張替え・表替え・裏返し・新調なら(有)竹原タタミ店へ。
               地域密着の畳店として、和室を快適で美しく整えるご提案をいたします。
             </p>
-            {/* SEO keywords (hidden visually but indexable) */}
-            <p className="text-tatami-700 text-[10px] mt-4 leading-relaxed">
-              鹿児島 畳 / 鹿児島市 畳 / 東谷山 畳 / 鹿児島 畳 張替え / 鹿児島市 畳 表替え / 鹿児島 琉球畳 / 縁なし畳 鹿児島 / 畳 新調 鹿児島
-            </p>
+            <div className="mt-4 text-tatami-500 text-xs leading-relaxed space-y-0.5">
+              <p>鹿児島県内全域の畳 張替え・表替え・新調に対応</p>
+              <p>霧島市・姶良市・日置市・鹿屋市・指宿市ほか</p>
+            </div>
           </div>
 
           {/* Contact */}
