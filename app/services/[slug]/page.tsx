@@ -54,15 +54,18 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
         { '@type': 'ListItem', position: 3, name: service.title, item: `https://www.takeharatatamiten.com/services/${service.slug}` },
       ],
     },
-    ...(service.faqs.length > 0 ? [{
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: service.faqs.map(f => ({
-        '@type': 'Question',
-        name: f.q,
-        acceptedAnswer: { '@type': 'Answer', text: f.a },
-      })),
-    }] : []),
+    ...(() => {
+      const allFaqs = [...service.faqs, ...(service.extendedFaqs ?? [])]
+      return allFaqs.length > 0 ? [{
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: allFaqs.map(f => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      }] : []
+    })(),
   ]
 
   return (
