@@ -385,7 +385,7 @@ export const useCasesData: UseCaseData[] = [
         a: '鹿児島の夏は高温多湿で畳のカビが発生しやすい環境です。特に高齢者のいる部屋はエアコン使用で窓を開けないことが多く、換気不足になりがちです。エアコンのドライ機能活用・定期的な換気・除湿機の設置が有効です。また、和紙畳への変更で防カビ性を高めることも検討してください。',
       },
     ],
-    relatedServices: ['care-tatami', 'shincho', 'omotegae'],
+    relatedServices: ['care-tatami', 'shinchou', 'omotegae'],
     relatedMaterials: ['kokusan-igusa', 'washi'],
     seo: {
       title: '高齢者のいる家庭向け畳 安全・安心な和室づくり｜竹原タタミ店',
@@ -754,7 +754,7 @@ export const useCasesData: UseCaseData[] = [
         a: '素材・サイズ・施工内容によって異なりますが、最高級い草の使用・大型特注サイズの製作・特殊な施工が必要な場合は一般家庭向けより費用が高くなります。格式ある空間への施工は品質を最優先にするため、費用よりも仕上がりの品質を重視していただくことが前提となります。詳細はお見積もりにてご確認ください。',
       },
     ],
-    relatedServices: ['temple-tatami', 'shincho'],
+    relatedServices: ['temple-tatami', 'shinchou'],
     relatedMaterials: ['kumamoto-igusa', 'kokusan-igusa'],
     seo: {
       title: '寺院・和室施設向け畳 施工｜竹原タタミ店 鹿児島',
@@ -881,7 +881,7 @@ export const useCasesData: UseCaseData[] = [
         a: '引き渡し日まで2週間以上あれば、多くの場合は対応できます。急ぎの場合はまずお電話でご連絡ください。状況を確認した上でできる限り対応します。素材の選択が難しい場合は、ご相談の上で最善のご提案をします。',
       },
     ],
-    relatedServices: ['shincho', 'herinashi', 'washi-tatami'],
+    relatedServices: ['shinchou', 'herinashi', 'washi-tatami'],
     relatedMaterials: ['kumamoto-igusa', 'washi'],
     seo: {
       title: '新築住宅の畳 素材選び・施工｜竹原タタミ店 鹿児島',
@@ -999,7 +999,7 @@ export const useCasesData: UseCaseData[] = [
         a: '畳の撤去時に床板の状態を確認し、傷みがある場合はリフォーム業者に補修を依頼することをお勧めします。床板の状態は畳の仕上がりと安全性に直接影響するため、畳の設置前に床板の補修を完了させることが大切です。',
       },
     ],
-    relatedServices: ['shincho', 'herinashi', 'washi-tatami'],
+    relatedServices: ['shinchou', 'herinashi', 'washi-tatami'],
     relatedMaterials: ['washi', 'kumamoto-igusa'],
     seo: {
       title: 'リフォーム・リノベーション向け畳の選び方｜竹原タタミ店 鹿児島',
@@ -1117,7 +1117,7 @@ export const useCasesData: UseCaseData[] = [
         a: '畳の取り外しは可能ですが、正確な採寸と製作は専門の技術が必要です。自分で取り外した場合は採寸の精度や床の状態確認が不十分になる可能性があるため、専門業者への依頼をお勧めします。竹原タタミ店では取り外しから設置まで一括して対応します。',
       },
     ],
-    relatedServices: ['omotegae', 'shincho', 'washi-tatami'],
+    relatedServices: ['omotegae', 'shinchou', 'washi-tatami'],
     relatedMaterials: ['washi', 'kokusan-igusa'],
     seo: {
       title: 'マンション向け薄畳・置き畳 施工｜竹原タタミ店 鹿児島',
@@ -1239,7 +1239,7 @@ export const useCasesData: UseCaseData[] = [
         a: '工務店・リフォーム業者から床の仕上がり予定日をお知らせいただければ、その日程に合わせて採寸・製作・設置のスケジュールを組みます。可能であれば設計図面もお送りいただけると事前の把握がしやすいです。業者間の直接連絡も可能ですのでご相談ください。',
       },
     ],
-    relatedServices: ['herinashi', 'ryukyu', 'color-tatami', 'washi-tatami'],
+    relatedServices: ['herinashi', 'ryukyu-tatami', 'color-tatami', 'washi-tatami'],
     relatedMaterials: ['washi', 'jushi'],
     seo: {
       title: '和モダン空間向け畳 縁なし・カラー畳｜竹原タタミ店 鹿児島',

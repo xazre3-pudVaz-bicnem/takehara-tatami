@@ -133,7 +133,7 @@ export const guidesData: GuideData[] = [
       { q: '新調すると畳が高くなって建具が閉まらなくなりませんか？', a: '厚さの調整は可能です。現地で建具・敷居との高さを確認し、既存の畳の厚みに合わせて仕上げますのでご安心ください。' },
       { q: '新調の畳床の種類を教えてください', a: '稲わら床（伝統的・断熱性最高）・建材床（スタイロフォーム入り・軽量・防湿性高）・複合床（わらと建材の組み合わせ）などがあります。鹿児島の湿気が多い環境では建材床や複合床がおすすめです。' },
     ],
-    relatedServices: ['omotegae', 'shincho', 'uragaeshi'],
+    relatedServices: ['omotegae', 'shinchou', 'uragaeshi'],
     relatedGuides: ['omotegae-vs-uragaeshi', 'tatami-price', 'tatami-life'],
     seo: {
       title: '畳の表替えと新調の違い｜どちらを選ぶべきか解説 | 竹原タタミ店',
@@ -368,7 +368,7 @@ export const guidesData: GuideData[] = [
       { q: '鹿児島市外でも同じ料金ですか？', a: '鹿児島県内は対応可能ですが、鹿児島市外の場合は出張費について事前にご相談いただく場合があります。まずはお問い合わせください。' },
       { q: '急いでいる場合は特急料金がかかりますか？', a: '緊急対応の場合は可能な限り対応します。特急料金については状況によって異なりますので、まずはお電話でご相談ください。' },
     ],
-    relatedServices: ['omotegae', 'uragaeshi', 'shincho'],
+    relatedServices: ['omotegae', 'uragaeshi', 'shinchou'],
     relatedGuides: ['omotegae-vs-shinchou', 'tatami-life'],
     seo: {
       title: '畳の料金・費用ガイド｜表替え・裏返し・新調の価格目安 | 竹原タタミ店',
@@ -609,7 +609,7 @@ export const guidesData: GuideData[] = [
       { q: '畳床の種類で寿命は変わりますか？', a: '稲わら床は通気性が高く長持ちしますが湿気に弱い面もあります。建材床はカビ・湿気に強く鹿児島の環境に適しています。素材選びで寿命は大きく変わります。' },
       { q: '和紙表や樹脂表は天然い草より長持ちしますか？', a: 'はい、一般的に和紙表・樹脂表は10〜15年の耐久性があり、天然い草の5〜10年より長持ちします。特に水回り近くや子ども部屋には耐久性の高い素材が適しています。' },
     ],
-    relatedServices: ['omotegae', 'uragaeshi', 'shincho'],
+    relatedServices: ['omotegae', 'uragaeshi', 'shinchou'],
     relatedGuides: ['omotegae-vs-shinchou', 'tatami-maintenance'],
     seo: {
       title: '畳の寿命・交換時期の目安｜表替え・裏返し・新調のタイミング | 竹原タタミ店',

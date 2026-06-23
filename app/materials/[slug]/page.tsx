@@ -334,7 +334,7 @@ export default async function MaterialDetailPage({ params }: { params: Promise<{
             title="関連サービス"
             links={[
               { href: '/services/omotegae', label: '表替え', description: 'お好みの素材に張替え' },
-              { href: '/services/shincho', label: '新調', description: '畳床から全て新しく' },
+              { href: '/services/shinchou', label: '新調', description: '畳床から全て新しく' },
               { href: '/materials/comparison', label: '素材比較表', description: '全素材を一覧で比較' },
               { href: '/contact', label: 'サンプルを見たい', description: '現地でサンプルをご確認' },
             ]}

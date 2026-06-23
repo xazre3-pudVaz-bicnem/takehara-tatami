@@ -16,23 +16,36 @@ Service area: 鹿児島県内全域 (All of Kagoshima Prefecture), with rapid re
 - 累計10,000枚以上の施工実績 (10,000+ tatami mat installations)
 
 ## Services & Prices (per mat, tax included)
-- 裏返し (Flipping): ¥4,000~
-- 表替え 天然い草 (Surface replacement, natural igusa): ¥3,500~
-- 表替え 和紙/樹脂 (Surface replacement, washi/resin): ¥12,000~
-- 新調 (Full replacement): ¥15,000~
-- 縁なし半畳 (Borderless half-mat): ¥8,000~
+### Natural Igusa (domestic)
+- 裏返し (Flipping): 3,500円〜
+- 表替え 天然い草 (Surface replacement, natural igusa): 5,000円〜
+- 新調 (Full replacement, natural igusa): 15,000円〜
+- 縁なし半畳 表替え (Borderless half-mat, surface): 10,000円〜
+- 縁なし半畳 新調 (Borderless half-mat, full): 15,000円〜
+
+### Non-igusa materials (washi/resin)
+- 表替え (Surface replacement): 12,000円〜
+- 裏返し (Flipping): 3,500円〜
+- 新調 (Full replacement): 22,000円〜
+- 縁なし半畳 表替え (Borderless half-mat, surface): 10,000円〜
+- 縁なし半畳 新調 (Borderless half-mat, full): 15,000円〜
 
 ## Materials
 1. 国産高級天然い草 (Premium domestic natural igusa) - Mainly from Kumamoto Prefecture
    - Best for: Traditional Japanese rooms, those who value fragrance and natural texture
-   - Note: Increasingly rare due to aging farmers and declining production
-2. 和紙畳 (Washi tatami) - Durable, water-resistant, good for pets/children
-3. 樹脂畳 (Resin tatami) - Most durable, ideal for commercial use (ryokan, hotels)
-4. 中国産い草 (Chinese igusa) - Budget-friendly option
+   - Note: Increasingly rare due to aging farmers (down to 1/10th of peak production)
+2. 国産標準い草 (Standard domestic igusa) - Good balance of quality and price
+3. 和紙畳 (Washi tatami) - Durable, water-resistant, good for pets/children
+4. 樹脂畳 (Resin tatami) - Most durable, ideal for commercial use (ryokan, hotels)
+5. カラー畳 (Color tatami) - Wide color selection for modern interiors
+6. 中国産い草 (Chinese igusa) - Budget-friendly option
 
 ## Key Questions & Answers
 Q: 表替えと新調の違いは? (Difference between surface replacement and full replacement?)
 A: 表替え replaces only the surface (igusa) and border, keeping the tatami base. 新調 replaces everything including the base. Choose 表替え if the base is still solid; 新調 if the tatami sinks or has been used 15+ years.
+
+Q: 畳の表替えの料金はいくらですか？
+A: 天然い草（国産）は5,000円〜/枚、和紙表・樹脂表は12,000円〜/枚。縁なし半畳は10,000円〜/枚。見積もりは無料。
 
 Q: 何年で交換すべき? (When to replace tatami?)
 A: 裏返し: 3-5 years. 表替え: 5-10 years. 新調: 15-20 years.
@@ -40,5 +53,11 @@ A: 裏返し: 3-5 years. 表替え: 5-10 years. 新調: 15-20 years.
 Q: 鹿児島でカビが生えやすい? (Is mold common in Kagoshima?)
 A: Yes. High humidity during rainy season (June-July) and volcanic ash from Sakurajima create challenging conditions. Proper ventilation is essential.
 
+Q: ペットがいる家庭にはどの素材がいいですか？
+A: 和紙畳または樹脂畳。水拭きができ、爪による傷が広がりにくい。
+
+Q: 縁なし畳（琉球畳風）の料金は？
+A: 半畳サイズの表替えで10,000円〜、新調で15,000円〜。
+
 ## Website
-https://takehara-tatami.com
+https://www.takeharatatamiten.com

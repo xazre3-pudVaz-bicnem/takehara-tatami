@@ -234,9 +234,9 @@ export default function BlogPostClient({ slug }: { slug: string }) {
         />
 
         {/* Decorative divider */}
-        <div className="flex items-center gap-3 mb-10">
+        <div className="flex items-center gap-4 mb-10">
           <div className="h-px flex-1 bg-tatami-100" />
-          <span className="text-tatami-300 text-xs font-serif">◆</span>
+          <div className="w-1.5 h-1.5 rounded-full bg-tatami-300" />
           <div className="h-px flex-1 bg-tatami-100" />
         </div>
 

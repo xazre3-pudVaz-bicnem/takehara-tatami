@@ -5,14 +5,14 @@ import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 import type { ServiceData } from '@/lib/services-data'
 
-const serviceOrder = ['omotegae', 'uragaeshi', 'shincho', 'herinashi', 'ryukyu']
+const serviceOrder = ['omotegae', 'uragaeshi', 'shinchou', 'herinashi', 'ryukyu-tatami']
 
 const guidePrices: Record<string, string> = {
-  omotegae: '¥3,500〜 / 枚',
-  uragaeshi: '¥2,000〜 / 枚',
-  shincho: '¥15,000〜 / 枚',
-  herinashi: '¥8,000〜 / 枚',
-  ryukyu: '¥10,000〜 / 枚',
+  omotegae: '5,000円〜 / 枚',
+  uragaeshi: '3,500円〜 / 枚',
+  shinchou: '15,000円〜 / 枚',
+  herinashi: '10,000円〜 / 枚（半畳）',
+  'ryukyu-tatami': '10,000円〜 / 枚（半畳）',
 }
 
 export default function ServicesGrid({ services }: { services: ServiceData[] }) {

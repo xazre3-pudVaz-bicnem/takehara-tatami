@@ -143,7 +143,7 @@ export default function FAQPage() {
                 {[
                   { cond: '使用3〜5年 / 表面の色褪せ・少しのチクチク', rec: '→ 裏返し', href: '/services/uragaeshi' },
                   { cond: '使用5〜10年 / 変色・ささくれ・臭いが気になる', rec: '→ 表替え', href: '/services/omotegae' },
-                  { cond: '使用15年以上 / 踏むと沈む・波打つ', rec: '→ 新調', href: '/services/shincho' },
+                  { cond: '使用15年以上 / 踏むと沈む・波打つ', rec: '→ 新調', href: '/services/shinchou' },
                   { cond: '和モダンにしたい / フローリングと合わせたい', rec: '→ 縁なし畳', href: '/services/herinashi' },
                 ].map((item, i) => (
                   <Link key={i} href={item.href} className="flex items-center justify-between p-3 bg-white rounded-xl border border-tatami-100 hover:border-tatami-400 transition-colors group">

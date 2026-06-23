@@ -444,7 +444,7 @@ export const problemsData: ProblemData[] = [
       'へこみ部分だけ色が違う・臭いがする（腐食が疑われる）。',
       '隣の畳との間に大きな隙間ができてきた。',
     ],
-    recommendedService: { slug: 'shincho', label: '新調' },
+    recommendedService: { slug: 'shinchou', label: '新調' },
     relatedProblems: ['shizumu', 'namidatsu', 'koukan-jiki'],
     faqs: [
       { q: '家具のへこみは表替えで直りますか？', a: '畳表（い草部分）の軽いへこみは表替えで改善する場合があります。しかし畳床（芯材）が変形・圧縮している場合は表替えでは根本解決にならず、新調が必要です。現地でへこみの原因を確認した上で最適な方法をご提案します。' },
@@ -601,7 +601,7 @@ export const problemsData: ProblemData[] = [
       '高齢者・幼児がいる家庭で安全上の不安がある。',
       '他の畳と比べて明らかに高さが違う枚数がある。',
     ],
-    recommendedService: { slug: 'shincho', label: '新調' },
+    recommendedService: { slug: 'shinchou', label: '新調' },
     relatedProblems: ['hekonda', 'namidatsu', 'koukan-jiki'],
     faqs: [
       { q: '畳が沈むのは表替えで直りますか？', a: '沈みは畳床（芯材）の問題のため、畳表を交換する表替えでは改善しません。芯材ごと新しくする「新調」が必要です。表替えをしても沈みが残ります。' },
@@ -677,7 +677,7 @@ export const problemsData: ProblemData[] = [
       '隙間部分にカビや虫が発生している。',
       '沈み・波打ちなど他の問題も同時に生じている。',
     ],
-    recommendedService: { slug: 'shincho', label: '新調（または表替え）' },
+    recommendedService: { slug: 'shinchou', label: '新調（または表替え）' },
     relatedProblems: ['shizumu', 'namidatsu', 'koukan-jiki'],
     faqs: [
       { q: '畳の隙間を自分で埋めることはできますか？', a: '市販の畳用隙間テープで5mm未満の軽微な隙間には一時的に対処できます。ただし根本的な解決にはならず、変形が進んでいる場合は隙間テープでも対応しきれなくなります。' },
@@ -817,7 +817,7 @@ export const problemsData: ProblemData[] = [
       '複数枚の畳が同時に波打っている。',
       '隣接する畳との段差が生じている。',
     ],
-    recommendedService: { slug: 'shincho', label: '新調' },
+    recommendedService: { slug: 'shinchou', label: '新調' },
     relatedProblems: ['shizumu', 'hekonda', 'sukima'],
     faqs: [
       { q: '畳の波打ちは直りますか？', a: '軽微なものはしばらくすると落ち着く場合がありますが、多くの場合は新調が必要です。現地で確認した上でご提案します。' },

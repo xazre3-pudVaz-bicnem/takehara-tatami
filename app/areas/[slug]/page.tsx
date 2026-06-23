@@ -42,9 +42,9 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 const services = [
   { slug: 'omotegae', label: '表替え', desc: '畳表・縁を新しく交換' },
   { slug: 'uragaeshi', label: '裏返し', desc: '最もリーズナブルな施工' },
-  { slug: 'shincho', label: '新調', desc: '畳を全て新品に交換' },
+  { slug: 'shinchou', label: '新調', desc: '畳を全て新品に交換' },
   { slug: 'herinashi', label: '縁なし畳', desc: '和モダンスタイル' },
-  { slug: 'ryukyu', label: '琉球畳風', desc: '市松模様の洗練された和室' },
+  { slug: 'ryukyu-tatami', label: '琉球畳風', desc: '市松模様の洗練された和室' },
 ]
 
 const pricing = [
@@ -347,7 +347,7 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
             title="関連ページ"
             links={[
               { href: '/services/omotegae', label: '表替えについて', description: '最も一般的なメンテナンス方法' },
-              { href: '/services/shincho', label: '新調について', description: '畳床から全て新品に交換' },
+              { href: '/services/shinchou', label: '新調について', description: '畳床から全て新品に交換' },
               { href: '/materials/kumamoto-igusa', label: '国産高級い草について', description: '職人が推奨する本物の素材' },
               { href: '/problems/kabi', label: '畳のカビ対策', description: '鹿児島の梅雨時期に注意' },
               { href: '/faq', label: 'よくある質問', description: 'お客様から多いご質問' },
