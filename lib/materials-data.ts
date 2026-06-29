@@ -104,7 +104,7 @@ export const materialsData: MaterialData[] = [
       { q: '国産高級い草を使った新調畳の費用はどのくらいですか？', a: '畳の枚数・部屋の大きさ・素材のグレード・施工内容によって大きく異なります。まずは無料でご自宅に伺い、寸法を測ったうえでお見積もりをご提示します。お気軽に099-267-1577までご連絡ください。' },
     ],
     relatedServices: ['omotegae', 'shinchou'],
-    relatedMaterials: ['kokusan-igusa', 'chugoku-igusa', 'washi', 'jushi', 'comparison'],
+    relatedMaterials: ['kokusan-igusa', 'washi', 'jushi', 'comparison'],
     seo: {
       title: '熊本県産 国産高級天然い草の畳｜竹原タタミ店【鹿児島】',
       description: '国産高級天然い草（主に熊本県産）の特徴・選び方を詳しく解説。農家の高齢化で希少になりつつある本物のい草畳。鹿児島市の竹原タタミ店が丁寧にご提案します。',
@@ -184,7 +184,7 @@ export const materialsData: MaterialData[] = [
       { q: '畳の上にカーペットや絨毯を敷いても大丈夫ですか？', a: '通気性が損なわれてカビ・ダニが発生しやすくなるためお勧めしません。どうしても敷く場合は時々めくって換気し、乾燥させることを習慣にしてください。' },
     ],
     relatedServices: ['omotegae', 'shinchou'],
-    relatedMaterials: ['kumamoto-igusa', 'chugoku-igusa', 'comparison'],
+    relatedMaterials: ['kumamoto-igusa', 'washi', 'comparison'],
     seo: {
       title: '国産天然い草の畳｜選び方と特徴 | 竹原タタミ店【鹿児島】',
       description: '国産天然い草の畳は香り・調湿効果・踏み心地のバランスが良い素材。特徴・メンテナンス方法を解説。鹿児島市の竹原タタミ店にご相談ください。',
