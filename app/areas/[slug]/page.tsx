@@ -279,7 +279,7 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
           <FadeIn delay={0.2}>
             <section className="mb-12">
               <h2 className="font-serif text-xl md:text-2xl font-bold text-ink mb-4">
-                料金目安（1枚あたり）
+                料金（税込・1枚あたり）
               </h2>
               <div className="bg-tatami-50 rounded-2xl border border-tatami-100 overflow-hidden">
                 {pricing.map((p, i) => (
@@ -292,7 +292,7 @@ export default async function AreaDetailPage({ params }: { params: Promise<{ slu
                   </div>
                 ))}
               </div>
-              <p className="text-muted text-xs mt-3">※ 畳のサイズ・素材・枚数により変わります。詳しくは現地確認の上でご提示します。</p>
+              <p className="text-muted text-xs mt-3">※ 表示価格はすべて税込・1枚あたりの目安です。現地確認・お見積もりは無料です。</p>
             </section>
           </FadeIn>
 

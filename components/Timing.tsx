@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -33,8 +33,8 @@ const signs = [
   {
     no: '04',
     symptom: '和室の雰囲気を変えたい',
-    detail: '縁なし畳・琉球畳にしたい、洋室っぽい雰囲気にしたい、色を変えたい場合。',
-    solution: '縁なし・琉球畳',
+    detail: '縁なし畳にしたい、洋室っぽい雰囲気にしたい、色を変えたい場合。',
+    solution: '縁なし畳（目積）',
     solutionNote: '和モダンな新しいスタイルへ',
     Icon: Sparkles,
   },

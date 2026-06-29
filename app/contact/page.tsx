@@ -1,10 +1,10 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import ContactClient from './_components/ContactClient'
 
 export const metadata: Metadata = {
   title: '鹿児島の畳 お問い合わせ・無料見積もり｜(有)竹原タタミ店',
   description:
-    '鹿児島市東谷山の畳専門店・竹原タタミ店へのお問い合わせ。現地確認・お見積もりは無料。表替え・新調・縁なし畳・琉球畳など畳に関するご相談はお電話（099-267-1577）またはフォームよりどうぞ。',
+    '鹿児島市東谷山の畳専門店・竹原タタミ店へのお問い合わせ。現地確認・お見積もりは無料。表替え・新調・縁なし畳など畳に関するご相談はお電話（099-267-1577）またはフォームよりどうぞ。',
   keywords: [
     '鹿児島 畳 問い合わせ',
     '竹原タタミ店 電話',

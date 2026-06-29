@@ -115,7 +115,7 @@ export default function Services() {
         <SectionTitle
           en="SERVICES"
           ja="サービス紹介"
-          description="畳の表替え・裏返し・新調から縁なし畳・琉球畳まで。鹿児島市のあらゆる畳のお悩みに対応します。"
+          description="畳の表替え・裏返し・新調から縁なし畳まで。鹿児島市のあらゆる畳のお悩みに対応します。"
         />
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {services.map((s, i) => (

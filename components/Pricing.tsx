@@ -39,7 +39,7 @@ function PriceTable({ title, rows, delay = 0 }: { title: string; rows: typeof ig
       </div>
       <div className="grid grid-cols-[1fr_auto_1fr] bg-tatami-400 text-white text-xs">
         <div className="px-4 py-2 font-medium">施工内容</div>
-        <div className="px-4 py-2 font-medium text-center">料金目安</div>
+        <div className="px-4 py-2 font-medium text-center">料金（税込）</div>
         <div className="px-4 py-2 font-medium">備考</div>
       </div>
       {rows.map((row, i) => (
