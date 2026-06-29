@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+﻿import type { Metadata } from 'next'
 import Link from 'next/link'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -9,7 +9,7 @@ import { materialsData } from '@/lib/materials-data'
 export const metadata: Metadata = {
   title: '畳の素材について｜国産い草・和紙・樹脂の比較 | (有)竹原タタミ店【鹿児島】',
   description:
-    '畳の素材（国産い草・中国産い草・和紙畳・樹脂畳）の特徴・違い・選び方を詳しく解説。鹿児島市の竹原タタミ店が職人目線でご説明します。現地でサンプルをご確認いただけます。',
+    '畳の素材（国産い草・和紙畳・樹脂畳）の特徴・違い・選び方を詳しく解説。鹿児島市の竹原タタミ店が職人目線でご説明します。現地でサンプルをご確認いただけます。',
   openGraph: {
     title: '畳の素材について｜国産い草・和紙・樹脂 | 竹原タタミ店【鹿児島】',
     description: '畳素材の特徴・比較・選び方を詳しく解説。鹿児島市の竹原タタミ店。',
@@ -138,7 +138,7 @@ export default function MaterialsPage() {
                     {[
                       { name: '国産高級い草', ko: '◎', taikyu: '◎', taisui: '△', price: '高め' },
                       { name: '国産い草（標準）', ko: '○', taikyu: '○', taisui: '△', price: '標準' },
-                      { name: '中国産い草', ko: '△', taikyu: '○', taisui: '△', price: '手頃' },
+                      
                       { name: '和紙畳', ko: '−', taikyu: '◎', taisui: '◎', price: '高め' },
                       { name: '樹脂畳', ko: '−', taikyu: '◎', taisui: '◎', price: '幅広' },
                     ].map((row, i) => (

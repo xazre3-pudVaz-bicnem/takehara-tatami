@@ -8,10 +8,10 @@ import { WorksListClient } from './_components/WorksListClient'
 export const metadata: Metadata = {
   title: '施工事例 | 竹原タタミ店【鹿児島】',
   description:
-    '鹿児島市内での実際の畳施工事例をご紹介します。表替え・新調・縁なし畳・琉球畳風など、写真と施工内容を掲載しています。',
+    '鹿児島市内での実際の畳施工事例をご紹介します。表替え・新調・縁なし畳・和紙畳・樹脂畳など、写真と施工内容を掲載しています。',
   openGraph: {
     title: '施工事例 | 竹原タタミ店【鹿児島】',
-    description: '鹿児島市内の畳施工事例。表替え・新調・縁なし畳・琉球畳風など多数掲載。',
+    description: '鹿児島市内の畳施工事例。表替え・新調・縁なし畳・和紙畳など多数掲載。',
     type: 'website',
   },
 }

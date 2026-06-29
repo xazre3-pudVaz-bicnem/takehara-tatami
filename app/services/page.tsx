@@ -42,8 +42,8 @@ const gradeServices = [
     ],
   },
   {
-    grade: '国産中級品',
-    en: 'DOMESTIC MID-GRADE',
+    grade: '国産標準品',
+    en: 'DOMESTIC STANDARD',
     note: '品質とコストのバランスを求める方に',
     highlight: false,
     gradientFrom: '#88B462',

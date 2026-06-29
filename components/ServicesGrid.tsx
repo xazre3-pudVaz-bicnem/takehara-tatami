@@ -9,7 +9,7 @@ const serviceOrder = ['omotegae', 'uragaeshi', 'shinchou', 'herinashi', 'ryukyu-
 
 const guidePrices: Record<string, string> = {
   omotegae: '5,000円〜 / 枚',
-  uragaeshi: '3,500円〜 / 枚',
+  uragaeshi: '4,000円〜 / 枚',
   shinchou: '15,000円〜 / 枚',
   herinashi: '10,000円〜 / 枚（半畳）',
   'ryukyu-tatami': '10,000円〜 / 枚（半畳）',

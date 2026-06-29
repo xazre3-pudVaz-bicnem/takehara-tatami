@@ -44,15 +44,15 @@ const services = [
   { slug: 'uragaeshi', label: '裏返し', desc: '最もリーズナブルな施工' },
   { slug: 'shinchou', label: '新調', desc: '畳を全て新品に交換' },
   { slug: 'herinashi', label: '縁なし畳', desc: '和モダンスタイル' },
-  { slug: 'ryukyu-tatami', label: '琉球畳風', desc: '市松模様の洗練された和室' },
+  { slug: 'ryukyu-tatami', label: '縁なし畳（目積）', desc: '市松模様の洗練された和室' },
 ]
 
 const pricing = [
   { label: '裏返し', price: '¥4,000〜', note: '1枚・税込' },
-  { label: '表替え（い草）', price: '¥3,500〜', note: '1枚・税込' },
+  { label: '表替え（い草）', price: '¥5,000〜', note: '1枚・税込' },
   { label: '表替え（和紙/樹脂）', price: '¥12,000〜', note: '1枚・税込' },
   { label: '新調', price: '¥15,000〜', note: '1枚・税込' },
-  { label: '縁なし（半畳）', price: '¥8,000〜', note: '1枚・税込' },
+  { label: '縁なし（半畳）', price: '¥10,000〜', note: '1枚・税込' },
 ]
 
 const flow = [

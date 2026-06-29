@@ -40,17 +40,17 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 }
 
 const comparisonRows = [
-  { label: '耐久性', values: ['◎', '○', '○', '◎', '◎'] },
-  { label: '香り', values: ['◎', '○', '△', '−', '−'] },
-  { label: '調湿効果', values: ['◎', '○', '○', '△', '△'] },
-  { label: '耐水性', values: ['△', '△', '△', '◎', '◎'] },
-  { label: 'カビにくさ', values: ['○', '○', '○', '◎', '◎'] },
-  { label: 'ペット向き', values: ['△', '△', '△', '○', '◎'] },
-  { label: '和の雰囲気', values: ['◎', '◎', '○', '○', '△'] },
-  { label: '価格の手頃さ', values: ['△', '○', '◎', '△', '○'] },
+  { label: '耐久性', values: ['◎', '○', '◎', '◎'] },
+  { label: '香り', values: ['◎', '○', '−', '−'] },
+  { label: '調湿効果', values: ['◎', '○', '△', '△'] },
+  { label: '耐水性', values: ['△', '△', '◎', '◎'] },
+  { label: 'カビにくさ', values: ['○', '○', '◎', '◎'] },
+  { label: 'ペット向き', values: ['△', '△', '○', '◎'] },
+  { label: '和の雰囲気', values: ['◎', '◎', '○', '△'] },
+  { label: '価格の手頃さ', values: ['△', '○', '△', '○'] },
 ]
 
-const comparisonHeaders = ['国産高級い草', '国産標準い草', '中国産い草', '和紙畳', '樹脂畳']
+const comparisonHeaders = ['国産高級い草', '国産標準い草', '和紙畳', '樹脂畳']
 
 export default async function MaterialDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

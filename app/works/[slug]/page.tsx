@@ -11,7 +11,7 @@ type Props = {
 
 export const metadata: Metadata = {
   title: '施工事例 | 竹原タタミ店【鹿児島】',
-  description: '竹原タタミ店の施工事例詳細。鹿児島市内の畳表替え・新調・縁なし畳・琉球畳風など。',
+  description: '竹原タタミ店の施工事例詳細。鹿児島市内の畳表替え・新調・縁なし畳・和紙畳など。',
 }
 
 export default async function WorkDetailPage({ params }: Props) {

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 施工事例の静的データ
  *
  * WordPress カスタム投稿タイプ "works" から取得する構造に合わせています。
@@ -27,7 +27,7 @@ export const WORK_CATEGORIES = [
   { id: 'omotegae', label: '表替え' },
   { id: 'shinchou', label: '新調' },
   { id: 'fuchinas', label: '縁なし畳' },
-  { id: 'ryukyu', label: '琉球畳風' },
+  { id: 'ryukyu', label: '縁なし畳' },
   { id: 'wamodan', label: '和モダン' },
   { id: 'before-after', label: 'ビフォーアフター' },
 ] as const
@@ -110,10 +110,10 @@ export const worksData: WorkItem[] = [
   {
     id: 7,
     slug: 'ryukyu-8jo-koriyama-1',
-    title: '琉球畳風 8畳',
+    title: '縁なし畳（目積） 8畳',
     category: 'ryukyu',
     location: '鹿児島市郡元',
-    service: '琉球畳風',
+    service: '縁なし畳（目積）',
     description: '市松模様が美しい。洗練された和の空間に。',
     imagePath: null,
     gradientFrom: '#D0C494',

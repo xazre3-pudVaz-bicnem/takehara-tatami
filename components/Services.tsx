@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
@@ -51,13 +51,13 @@ const services = [
   },
   {
     id: 'ryukyu',
-    name: '琉球畳風',
+    name: '縁なし畳（目積）',
     tag: '上質',
     color: 'bg-amber-50 border-amber-200',
     accent: 'text-amber-700',
     badge: 'bg-amber-100 text-amber-800',
     target: '高級感のある和室を作りたい方',
-    desc: 'い草のシンプルな織り目が特徴の琉球畳風。市松模様の配置が独特の美しさを生み出します。高級旅館風・ホテル風の和室を鹿児島市でもご提案できます。',
+    desc: '目積織りが特徴の縁なし畳。市松模様の配置が独特の美しさを生み出します。和モダン・旅館スタイルの和室を鹿児島市でもご提案できます。',
     recommend: '高級感のある和室 / 旅館・ホテル風に',
   },
   {

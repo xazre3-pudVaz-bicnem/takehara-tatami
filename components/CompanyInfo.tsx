@@ -11,7 +11,7 @@ const rows = [
   { label: '営業時間', value: '8:30〜18:00' },
   { label: '定休日', value: '基本日曜・祝日' },
   { label: '対応エリア', value: '鹿児島県内全域（鹿児島市内は迅速対応）' },
-  { label: '主な業務', value: '畳の表替え・裏返し・新調・縁なし畳・琉球畳風' },
+  { label: '主な業務', value: '畳の表替え・裏返し・新調・縁なし畳（目積）・和紙畳・樹脂畳' },
 ]
 
 export default function CompanyInfo() {
