@@ -6,19 +6,18 @@ import Link from 'next/link'
 import SectionTitle from './ui/SectionTitle'
 
 const igusaRows = [
-  { service: '表替え（標準）', price: '5,000円〜', note: '1枚あたり、国産天然い草' },
+  { service: '表替え（下級品）', price: '5,000円〜', note: '1枚あたり、国産天然い草' },
+  { service: '表替え（高級）', price: '25,000円〜', note: '1枚あたり、国産高級い草（熊本産）' },
   { service: '裏返し', price: '4,000円〜', note: '1枚あたり' },
   { service: '新調（下級品）', price: '15,000円〜', note: '1枚あたり、天然い草素材' },
-  { service: '新調（標準）', price: '22,000円〜', note: '1枚あたり、国産天然い草' },
+  { service: '新調（高級）', price: '35,000円〜', note: '1枚あたり、国産高級い草（熊本産）' },
   { service: '縁なし半畳 表替え', price: '10,000円〜', note: '目積・ヘリなし' },
   { service: '縁なし半畳 新調', price: '15,000円〜', note: '目積・ヘリなし' },
 ]
 
 const otherRows = [
-  { service: '表替え（標準）', price: '12,000円〜', note: '1枚あたり、和紙・樹脂表' },
-  { service: '表替え（高級）', price: '25,000円〜', note: '1枚あたり、高級和紙表' },
-  { service: '新調（標準）', price: '22,000円〜', note: '1枚あたり、和紙・樹脂表' },
-  { service: '新調（高級）', price: '35,000円〜', note: '1枚あたり、高級和紙表' },
+  { service: '表替え', price: '12,000円〜', note: '1枚あたり、和紙・樹脂表' },
+  { service: '新調', price: '22,000円〜', note: '1枚あたり、和紙・樹脂表' },
   { service: '縁なし半畳 表替え', price: '10,000円〜', note: '目積・ヘリなし（全素材）' },
   { service: '縁なし半畳 新調', price: '15,000円〜', note: '目積・ヘリなし（全素材）' },
 ]

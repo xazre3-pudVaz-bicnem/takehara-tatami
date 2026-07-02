@@ -42,9 +42,9 @@ const gradeServices = [
     ],
   },
   {
-    grade: '国産標準品',
-    en: 'DOMESTIC STANDARD',
-    note: '品質とコストのバランスを求める方に',
+    grade: '和紙・樹脂表',
+    en: 'WASHI / RESIN',
+    note: '耐久性・撥水性を重視する方に',
     highlight: false,
     gradientFrom: '#88B462',
     gradientTo: '#6E9A4C',
@@ -74,30 +74,26 @@ const comparison = [
   {
     item: '耐久性',
     gekyuu:  '3〜5年',
-    chuukyuu: '5〜10年',
+    washi:    '10〜15年',
     koukyuu:  '7〜15年',
-    resin:    '10〜15年',
   },
   {
     item: 'い草の香り',
     gekyuu:  'あり',
-    chuukyuu: 'あり',
+    washi:    'なし',
     koukyuu:  '◎ 豊か',
-    resin:    'なし',
   },
   {
     item: '色あせ',
     gekyuu:  '一般的な経年変化',
-    chuukyuu: '自然な経年変化',
+    washi:    '色変化が少ない',
     koukyuu:  '艶が出る経年美化',
-    resin:    '色変化が少ない',
   },
   {
     item: '価格帯',
     gekyuu:  '低',
-    chuukyuu: '中',
+    washi:    '中〜高',
     koukyuu:  '高',
-    resin:    '中〜高',
   },
 ]
 
@@ -411,18 +407,15 @@ export default function ServicesPage() {
                       <tr className="bg-tatami-100/60">
                         <th className="text-left px-4 py-3.5 text-xs font-bold text-ink/60 w-28">比較項目</th>
                         <th className="text-center px-3 py-3.5 text-xs font-bold text-tatami-400">
-                          下級品
+                          天然い草（下級品）
                         </th>
-                        <th className="text-center px-3 py-3.5 text-xs font-bold text-tatami-600">
-                          国産中級品
-                        </th>
+                        <th className="text-center px-3 py-3.5 text-xs font-bold text-[#5A7080]">和紙・樹脂表</th>
                         <th className="text-center px-3 py-3.5 text-xs font-bold text-tatami-700 bg-tatami-200/40">
                           <span className="inline-flex items-center gap-1 justify-center">
                             <Star size={10} className="text-tatami-500" strokeWidth={2} />
                             国産高級天然いぐさ
                           </span>
                         </th>
-                        <th className="text-center px-3 py-3.5 text-xs font-bold text-[#5A7080]">いぐさ以外の表</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-tatami-100">
@@ -430,9 +423,8 @@ export default function ServicesPage() {
                         <tr key={row.item} className={i % 2 === 0 ? 'bg-white' : 'bg-tatami-50/30'}>
                           <td className="px-4 py-3.5 font-medium text-ink text-xs">{row.item}</td>
                           <td className="px-3 py-3.5 text-center text-tatami-400 text-xs">{row.gekyuu}</td>
-                          <td className="px-3 py-3.5 text-center text-tatami-600 text-xs">{row.chuukyuu}</td>
+                          <td className="px-3 py-3.5 text-center text-muted text-xs">{row.washi}</td>
                           <td className="px-3 py-3.5 text-center text-tatami-700 bg-tatami-50/40 font-medium text-xs">{row.koukyuu}</td>
-                          <td className="px-3 py-3.5 text-center text-muted text-xs">{row.resin}</td>
                         </tr>
                       ))}
                     </tbody>
