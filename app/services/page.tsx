@@ -27,45 +27,82 @@ export const metadata: Metadata = {
   },
 }
 
-// ── 素材グレード別料金 ──────────────────────────────────────
+// ── 素材グレード別料金（5段階） ──────────────────────────────
 const gradeServices = [
   {
-    grade: '下級品',
-    en: 'STANDARD GRADE',
-    note: '手軽にリフレッシュしたい方に',
-    highlight: false,
-    gradientFrom: '#C4D9AC',
-    gradientTo: '#A4C480',
-    prices: [
-      { label: '表替え', price: '5,000円〜 / 枚' },
-      { label: '新調',   price: '15,000円〜 / 枚' },
-    ],
+    id: 'rental',
+    category: '賃貸・貸家用',
+    en: 'RENTAL',
+    price: '5,000円〜',
+    level: 1,
+    feature: 'コスト重視',
+    desc: '賃貸物件・仮住まいに最適。国産い草を使用。',
+    headerBg: 'bg-tatami-100',
+    headerText: 'text-tatami-700',
+    priceCls: 'text-tatami-600',
+    borderCls: 'border-tatami-200',
+    subNote: '新調 15,000円〜',
+    special: false,
   },
   {
-    grade: '和紙・樹脂表',
-    en: 'WASHI / RESIN',
-    note: '耐久性・撥水性を重視する方に',
-    highlight: false,
-    gradientFrom: '#88B462',
-    gradientTo: '#6E9A4C',
-    prices: [
-      { label: '表替え', price: '12,000円〜 / 枚' },
-      { label: '裏返し', price: '4,000円〜 / 枚' },
-      { label: '新調',   price: '22,000円〜 / 枚' },
-    ],
+    id: 'kojin',
+    category: '個人宅用',
+    en: 'STANDARD',
+    price: '15,000円〜',
+    level: 2,
+    feature: '香り・踏み心地のバランス',
+    desc: '国産い草の良さをご自宅で。個人宅向けグレード。',
+    headerBg: 'bg-tatami-500',
+    headerText: 'text-white',
+    priceCls: 'text-tatami-700',
+    borderCls: 'border-tatami-300',
+    subNote: '',
+    special: false,
   },
   {
-    grade: '国産高級天然いぐさ',
-    en: 'PREMIUM DOMESTIC',
-    note: '熊本県産。香りと艶が際立つ高品質素材',
-    highlight: true,
-    gradientFrom: '#6E9A4C',
-    gradientTo: '#4A7A2C',
-    prices: [
-      { label: '表替え', price: '25,000円〜 / 枚' },
-      { label: '裏返し', price: '4,000円〜 / 枚' },
-      { label: '新調',   price: '35,000円〜 / 枚' },
-    ],
+    id: 'jokyu',
+    category: '上級品',
+    en: 'PREMIUM',
+    price: '30,000円〜',
+    level: 3,
+    feature: '職人の技が光る',
+    desc: '厳選した国産い草。繊維・色艶・香りが際立つ上質な一枚。',
+    headerBg: 'bg-tatami-700',
+    headerText: 'text-white',
+    priceCls: 'text-tatami-800',
+    borderCls: 'border-tatami-400',
+    subNote: '',
+    special: false,
+  },
+  {
+    id: 'kokyu',
+    category: '高級品',
+    en: 'HIGH GRADE',
+    price: '45,000円〜',
+    level: 4,
+    feature: '特選国産い草の逸品',
+    desc: '色艶・香り・肌触りすべてが格別。本格的な和室に。',
+    headerBg: 'bg-tatami-800',
+    headerText: 'text-white',
+    priceCls: 'text-tatami-900',
+    borderCls: 'border-tatami-600',
+    subNote: '',
+    special: false,
+  },
+  {
+    id: 'finest',
+    category: '最高級品',
+    en: 'FINEST',
+    price: '応相談',
+    level: 5,
+    feature: '八代産 本物の最高級',
+    desc: '農家を直接訪ね、職人の目で選んだ唯一無二の畳表。',
+    headerBg: 'bg-gradient-to-r from-yellow-800 to-yellow-700',
+    headerText: 'text-yellow-100',
+    priceCls: 'text-yellow-800',
+    borderCls: 'border-yellow-600',
+    subNote: '素材・時期により変動',
+    special: true,
   },
 ]
 
@@ -98,49 +135,40 @@ const comparison = [
 ]
 
 // ── グレードカード ───────────────────────────────────────────
-function GradeCard({ g }: { g: typeof gradeServices[number] }) {
-  if (g.highlight) {
-    return (
-      <div className="relative bg-tatami-900 rounded-2xl overflow-hidden border-2 border-tatami-500/40">
-        <div className="h-1" style={{ background: `linear-gradient(to right, ${g.gradientFrom}, ${g.gradientTo})` }} />
-        <div className="absolute top-3 right-3">
-          <span className="inline-flex items-center gap-1 bg-tatami-400 text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
-            <Star size={9} strokeWidth={2} />
-            当店おすすめ
-          </span>
-        </div>
-        <div className="p-6 pt-5">
-          <p className="text-tatami-400 text-[10px] tracking-[0.3em] mb-1">{g.en}</p>
-          <h3 className="font-serif font-bold text-white text-lg mb-1 leading-snug">{g.grade}</h3>
-          <p className="text-tatami-400 text-xs mb-5 leading-relaxed">{g.note}</p>
-          <div className="space-y-2">
-            {g.prices.map(p => (
-              <div key={p.label} className="flex items-center justify-between bg-tatami-800/70 border border-tatami-700 rounded-xl px-4 py-2.5">
-                <span className="text-tatami-200 text-xs font-medium">{p.label}</span>
-                <span className="text-tatami-300 font-bold text-sm">{p.price}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    )
-  }
-
+function StarLevel({ level }: { level: number }) {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-tatami-100">
-      <div className="h-1" style={{ background: `linear-gradient(to right, ${g.gradientFrom}, ${g.gradientTo})` }} />
-      <div className="p-6 pt-5">
-        <p className="text-tatami-300 text-[10px] tracking-[0.3em] mb-1">{g.en}</p>
-        <h3 className="font-serif font-bold text-ink text-lg mb-1 leading-snug">{g.grade}</h3>
-        <p className="text-muted text-xs mb-5 leading-relaxed">{g.note}</p>
-        <div className="space-y-2">
-          {g.prices.map(p => (
-            <div key={p.label} className="flex items-center justify-between bg-tatami-50 border border-tatami-100 rounded-xl px-4 py-2.5">
-              <span className="text-ink text-xs font-medium">{p.label}</span>
-              <span className="text-tatami-600 font-bold text-sm">{p.price}</span>
-            </div>
-          ))}
+    <div className="flex gap-0.5 mb-2.5">
+      {Array.from({ length: 5 }, (_, i) => (
+        <svg key={i} className={`w-3.5 h-3.5 ${i < level ? 'text-yellow-400' : 'text-tatami-100'}`} viewBox="0 0 20 20" fill="currentColor">
+          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+        </svg>
+      ))}
+    </div>
+  )
+}
+
+function GradeCard({ g }: { g: typeof gradeServices[number] }) {
+  return (
+    <div className={`rounded-2xl border-2 ${g.borderCls} overflow-hidden bg-white h-full`}>
+      <div className={`px-3.5 py-2.5 ${g.headerBg}`}>
+        <p className={`text-[9px] tracking-[0.25em] font-medium opacity-75 ${g.headerText}`}>{g.en}</p>
+        <p className={`font-serif font-bold text-sm leading-tight ${g.headerText}`}>{g.category}</p>
+      </div>
+      <div className="px-3.5 py-4">
+        <StarLevel level={g.level} />
+        <div className="mb-3">
+          <span className={`text-xl font-bold font-serif ${g.priceCls}`}>{g.price}</span>
+          {g.price !== '応相談' && (
+            <span className="text-[10px] text-muted ml-1">表替え / 枚</span>
+          )}
         </div>
+        <p className="text-tatami-500 text-[10px] font-bold tracking-wider mb-2 uppercase">{g.feature}</p>
+        <p className="text-muted text-xs leading-relaxed">{g.desc}</p>
+        {g.subNote && (
+          <p className={`mt-2 text-[9px] rounded-lg px-2 py-1 ${g.special ? 'text-yellow-700 bg-yellow-50' : 'text-tatami-600 bg-tatami-50'}`}>
+            {g.subNote}
+          </p>
+        )}
       </div>
     </div>
   )
@@ -272,15 +300,20 @@ export default function ServicesPage() {
 
             {/* グレード別料金カード */}
             <FadeIn>
-              <p className="text-tatami-400 text-[10px] tracking-[0.3em] mb-5 text-center">PRICE BY GRADE · 素材グレード別料金</p>
+              <p className="text-tatami-400 text-[10px] tracking-[0.3em] mb-5 text-center">PRICE BY GRADE · グレード別料金（表替え・1枚・税込）</p>
             </FadeIn>
-            <div className="grid sm:grid-cols-3 gap-5 mb-8">
+            <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory -mx-1 px-1 mb-2">
               {gradeServices.map((g, i) => (
-                <FadeIn key={g.grade} delay={i * 0.1}>
-                  <GradeCard g={g} />
-                </FadeIn>
+                <div key={g.id} className="flex-shrink-0 w-44 sm:w-auto sm:flex-1 snap-start">
+                  <FadeIn delay={i * 0.1}>
+                    <GradeCard g={g} />
+                  </FadeIn>
+                </div>
               ))}
             </div>
+            <p className="text-muted text-xs mb-8">
+              ※ 新調・裏返しの料金はお問い合わせください。裏返し 4,000円〜 / 下級品新調 15,000円〜 / 高級新調 35,000円〜
+            </p>
 
             {/* 目積ヘリ無し半畳 */}
             <FadeIn>
