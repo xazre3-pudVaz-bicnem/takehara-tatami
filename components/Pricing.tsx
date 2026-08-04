@@ -89,7 +89,9 @@ type PriceRow = {
 const priceRows: PriceRow[] = [
   { label: '裏返し', price: '4,000円〜', note: '1枚・税込' },
   { label: '表替え（下級品）', price: '5,000円〜', note: '国産天然い草' },
-  { label: '表替え（高級）', price: '25,000円〜', note: '国産高級い草（熊本産）' },
+  { label: '表替え（個人宅用）', price: '15,000円〜', note: '国産天然い草' },
+  { label: '表替え（上級品）', price: '30,000円〜', note: '国産い草 上級' },
+  { label: '表替え（高級品）', price: '45,000円〜', note: '国産高級い草（熊本産）' },
   { label: '新調（下級品）', price: '15,000円〜', note: '国産天然い草' },
   { label: '新調（高級）', price: '35,000円〜', note: '国産高級い草（熊本産）' },
   { label: '和紙・樹脂表 表替え', price: '12,000円〜', note: '和紙表・樹脂表', divider: true },
